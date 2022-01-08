@@ -1,0 +1,438 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Aeon Dual Nano Switch Z132" version="3.2" 
+  url="https://opensmarthouse.org/zwavedatabase/1017/reference/ES---Dual-Nano-Switch-ZW132---V2-0.pdf" Manufacturer="0x86" ProductType="0x3" ProductID="0x84">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='1' default='closed'>WAllSwipe Config</Group>
+    <Group ID='2' default='closed'>Reporting</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Over Current Protection</Title>
+<Description>Output load will be closed after 30 seconds if the current sxceeds 10.5A
+0 – Disabled
+1 – Enabled</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Over Heat Protection</Title>
+<Description>Output load will be closed after 30 seconds if the temperature sxceeds 100C
+0 – Disabled
+1 – Enabled</Description>
+</Parameter>
+
+<Parameter name="20" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="4" />
+<Title>Status After Power Up</Title>
+<Description>Determines how the device will operate when it is powered up:
+0 – Return to the last status when power was lost
+1 – Always On
+2 – Always Off</Description>
+</Parameter>
+
+<Parameter name="21" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range+" subtype2 = "binarycheck" size="4" /> 
+<Value1 from="256" to="257" values="0,1" default="257" size="2"/><!--MSW-->
+<Value2 values="0,1,256" default="257" size="2"/><!--LSW-->
+<Title>Enable/Disable the IR sensor of WallSwipe</Title>
+<Description>Combine the values to select the required combination
+LSB
+1   IR Sensor Enablement (0: Disabled, 1:Enabled)
+256 Wave Option Selected (0: Option 1, 1: Option 2)
+
+MSB
+1   Scene control functionality for Left/Right wave (0: Disabled, 1:Enabled)
+256 Scene control functionality for all wave actions (0: Disabled, 1:Enabled)</Description>
+</Parameter>
+
+<Parameter name="64" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="0" to="255" default="10" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the button colour of WallSwipe</Title>
+<Description>Defines the Level 1 and the RGB colour
+MSB: Level 1 - Brightness?
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<Parameter name="65" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="50" to="50" default="50" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the LED indication color of WallSwipe Up</Title>
+<Description>Defines the the RGB colour
+MSB: Reserved do not change of 0x32
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<Parameter name="66" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="50" to="50" default="50" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the LED indication color of WallSwipe Down</Title>
+<Description>Defines the the RGB colour
+MSB: Reserved do not change of 0x32
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<Parameter name="67" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="50" to="50" default="50" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the LED indication color of WallSwipe Left</Title>
+<Description>Defines the the RGB colour
+MSB: Reserved do not change of 0x32
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<Parameter name="68" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="50" to="50" default="50" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the LED indication color of WallSwipe Right</Title>
+<Description>Defines the the RGB colour
+MSB: Reserved do not change of 0x32
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<Parameter name="69" group="1" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2 = "text" size="4" /> 
+<Value1 from="10" to="10" default="10" size="1" />
+<Value2 from="0" to="16777215" default="16777215" size="3" />
+<Title>Set the color of WallSwipe at Night</Title>
+<Description>Defines the the RGB colour
+MSB: Reserved do not change of Ox0A
+
+LSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue</Description>>
+</Parameter>
+
+<!--
+<Parameter name="71" group="1" access="r" type="text">
+<Setting from="10" to="10" default="0" size="1" />
+<Title>Set the Sensitivity of WallSwipe</Title>
+<Description>No defnition has been loacted for this parameter</Description>>
+</Parameter>
+-->
+
+<Parameter name="80" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Set Notification Type</Title>
+<Description>Set the type of notifications to be sent
+0 – Nothing
+1 – Hail CC
+2 – Basic Report CC
+3 – Hail CC when using external switch to switch the loads</Description>
+</Parameter>
+
+<Parameter name="81" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>External Switch 1 Notification to Association Group 3</Title>
+<Description>Set the type of notifications to be sent
+0 – Nothing
+1 – Basic Set CC</Description>
+</Parameter>
+
+<Parameter name="82" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>External Switch 2 Notification to Association Group 4</Title>
+<Description>Set the type of notifications to be sent
+0 – Nothing
+1 – Basic Set CC</Description>
+</Parameter>
+
+<Parameter name="83" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Configure state of LED when in 3 modes</Title>
+<Description>Defines
+0 – Energy Mode - The LED will follow the status of On/Off
+1 – Momentary Indicator Mode - When teh state of switch's load changed, the LED will follow the status On/Off of its Load, but the LED will turn off after 5 seconds is there is no switch action
+2 – Night Light Mode - The LED will remain ON</Description>
+</Parameter>
+
+<Parameter name="84" group="0" access="rw" type="hexcheck">
+<Setting subtype1="text" subtype2 = "text" size="4" /> 
+<Value1 from="0" to="5947" default="4608" size="2" />
+<Value2 from="0" to="5947" default="2048" size="2" />
+<Title>LED Night Light Mode Scheduler</Title>
+<Description>Defines the ON/OFF time of Night Light mode
+MSB - Value_1 * 256 + Value_2
+Value 1 = ON (Hour)   0-23 (Default 18 - 6pm)
+Value 2 = ON (Minute) 0-60
+
+LSB - Value_3 * 256 + Value_4
+Value 3 = OFF (Hour)   0-23 (Default 08 - 8am)
+Value 4 = OFF (Minute) 0-60</Description>
+</Parameter>
+
+<Parameter name="86" group="0" access="rw" type="hexcheck">
+<Setting subtype1="binarycheck" subtype2 = "text" size="4" /> 
+<Value1 values="1,2,4,8,16,32,64,256" default="127" size="2" />
+<Value2 from="0" to="5947" default="4608" size="2" />
+<Title>Timer ON time</Title>
+<Description>Defines the ON time for the Output Load
+MSB - Days of Week
+  1 - Monday
+  2 - Tuesday
+  4 - Wednesday
+  8 - Thursday
+ 16 - Friday
+ 32 - Saturday
+ 64 - Sunday
+
+256 - Enabled (Off = Disabled)
+
+LSB - Time of Day : Value_3 * 256 + Value_4
+Value 3 = OFF (Hour)   0-23 (Default 18 - 6pm)
+Value 4 = OFF (Minute) 0-60</Description>
+</Parameter>
+
+<Parameter name="87" group="0" access="rw" type="hexcheck">
+<Setting subtype1="binarycheck" subtype2 = "text" size="4" /> 
+<Value1 values="1,2,4,8,16,32,64,256" default="127" size="2" />
+<Value2 from="0" to="5947" default="5888" size="2" />
+<Title>Timer OFF time</Title>
+<Description>Defines the OFF time for the Output Load
+MSB - Days of Week
+  1 - Monday
+  2 - Tuesday
+  4 - Wednesday
+  8 - Thursday
+ 16 - Friday
+ 32 - Saturday
+ 64 - Sunday
+
+256 - Enabled (Off = Disabled)
+
+LSB - Time of Day : Value_3 * 256 + Value_4
+Value 3 = OFF (Hour)   0-23 (Default 23 - 11pm)
+Value 4 = OFF (Minute) 0-60</Description>
+</Parameter>
+
+<Parameter name="90" group="2" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Enable/Disable Wattage Movement Based Reporting</Title>
+<Description>Enable/Disable parameters 91 and 92
+0 – Disabled
+1 – Enabled</Description>
+</Parameter>
+
+<Parameter name="91" group="2" access="rw" type="range">
+<Setting from="1" to="256" default="25" size="2" />
+<Title>Absolute Wattage Change Trigger</Title>
+<Description>Wattage Change to Trigger a Meter Report
+Range 1-65535 by limited within this config to 1-256
+</Description>
+</Parameter>
+
+<Parameter name="92" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="5" size="1" />
+<Title>Percentage Wattage Change Trigger</Title>
+<Description>Percentage Wattage Change to Trigger a Meter Report</Description>
+</Parameter>
+
+<Parameter name="100" group="2" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Reset Report Group Reporting to Default</Title>
+<Description>Causes device to reset the values of parameters 101 to 103 to their manufacturer defaults
+1 – Perform reset</Description>
+</Parameter>
+
+<Parameter name="101" group="2" access="rw" type="hexcheck">
+<Setting subtype1="binarycheck" subtype2 = "binarycheck" size="4" /> 
+<Value1 values="1,2,8,16" default="0" size="2" />
+<Value2 values="1,2,4,8,256,512,2048,4096" default="8" size="2" />
+<Title>Reports to Report Group 1</Title>
+<Description>Defines the reports made
+MSB
+  1 - Volts on Channel 1
+  2 - Volts on Channel 2
+  8 - Current on Channel 1
+ 16 - Current on Channel 2
+
+LSB
+   1 - kWh of all Channels
+   2 - Watts of all Channels
+   4 - Volts of all Channels
+   8 - Current on all Channels
+ 256 - Watts on Channel 1
+ 512 - Watts on Channel 2
+2048 - kWh on Channel 1
+4096 - kWh on Channel 2</Description>
+</Parameter>
+
+<Parameter name="102" group="2" access="rw" type="hexcheck">
+<Setting subtype1="binarycheck" subtype2 = "binarycheck" size="4" /> 
+<Value1 values="1,2,8,16" default="0" size="2" />
+<Value2 values="1,2,4,8,256,512,2048,4096" default="6" size="2" />
+<Title>Reports to Report Group 2</Title>
+<Description>Defines the reports made
+MSB
+  1 - Volts on Channel 1
+  2 - Volts on Channel 2
+  8 - Current on Channel 1
+ 16 - Current on Channel 2
+
+LSB
+   1 - kWh of all Channels
+   2 - Watts of all Channels
+   4 - Volts of all Channels
+   8 - Current on all Channels
+ 256 - Watts on Channel 1
+ 512 - Watts on Channel 2
+2048 - kWh on Channel 1
+4096 - kWh on Channel 2</Description>
+</Parameter>
+
+<Parameter name="103" group="2" access="rw" type="hexcheck">
+<Setting subtype1="binarycheck" subtype2 = "binarycheck" size="4" /> 
+<Value1 values="1,2,8,16" default="0" size="2" />
+<Value2 values="1,2,4,8,256,512,2048,4096" default="0" size="2" />
+<Title>Reports to Report Group 3</Title>
+<Description>Defines the reports made
+MSB
+  1 - Volts on Channel 1
+  2 - Volts on Channel 2
+  8 - Current on Channel 1
+ 16 - Current on Channel 2
+
+LSB
+   1 - kWh of all Channels
+   2 - Watts of all Channels
+   4 - Volts of all Channels
+   8 - Current on all Channels
+ 256 - Watts on Channel 1
+ 512 - Watts on Channel 2
+2048 - kWh on Channel 1
+4096 - kWh on Channel 2</Description>
+</Parameter>
+
+<Parameter name="110" group="2" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Reset Reporting Time Intervals</Title>
+<Description>Causes device to reset the values of parameters 111 to 113 to their manufacturer defaults
+1 – Perform reset</Description>
+</Parameter>
+
+<Parameter name="111" group="2" access="rw" type="time">
+<Setting from="0" to="86400" default="1200" size="4">in seconds</Setting>
+<Title>Reporting Group 1 Time Interval</Title>
+<Description>Sets the time interval for Reporting Group 1 in seconds</Description>
+</Parameter>
+
+<Parameter name="112" group="2" access="rw" type="time">
+<Setting from="0" to="86400" default="120" size="4" />
+<Title>Reporting Group 2 Time Interval</Title>
+<Description>Sets the time interval for Reporting Group 2 in seconds</Description>
+</Parameter>
+
+<Parameter name="113" group="2" access="rw" type="time">
+<Setting from="0" to="86400" default="120" size="4" />
+<Title>Reporting Group 3 Time Interval</Title>
+<Description>Sets the time interval for Reporting Group 3 in seconds</Description>
+</Parameter>
+
+<Parameter name="120" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4" default="0" size="1" />
+<Title>S1 Switch Mode</Title>
+<Description>Defines the switch type connected to S1
+0 – Unidientified mode
+1 – 2 state switch mode
+2 – 3 way switch mode
+3 – Momentary/Push switch
+4 – Enter automatic identification mode (The blue LED will fast blink)</Description>
+</Parameter>
+
+<Parameter name="121" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4" default="0" size="1" />
+<Title>S2 Switch Mode</Title>
+<Description>Defines the switch type connected to S2
+0 – Unidientified mode
+1 – 2 state switch mode
+2 – 3 way switch mode
+3 – Momentary/Push switch
+4 – Enter automatic identification mode (The blue LED will fast blink)</Description>
+</Parameter>
+
+<Parameter name="122" group="0" access="rw" type="radio">
+<Setting values="1,2,3" default="3" size="1" />
+<Title>S1 Action</Title>
+<Description>Defines the action taken when S1 is switched
+1 – Switch the output load of itself
+2 – Control other node
+3 – Switch the output load AND control other nodes</Description>
+</Parameter>
+
+<Parameter name="123" group="0" access="rw" type="radio">
+<Setting values="1,2,3" default="3" size="1" />
+<Title>S2 Action</Title>
+<Description>Defines the action taken when S2 is switched
+1 – Switch the output load of itself
+2 – Control other node
+3 – Switch the output load AND control other nodes</Description>
+</Parameter>
+
+<Parameter name="247" group="0" access="rw" type="binarycheck">
+<Setting values="1,2" default="0" size="1" />
+<Title>2 State Switch Mode Operation</Title>
+<Description>Defines how the device works in 2 State Switch Mode
+1 – OFF : S1 is a toggle switch
+1 – ON : S1 is an ON/OFF switches (the output load is maintained in sync with the switch)
+2 – OFF : S2 is a toggle switch
+2 – ON : S2 is an ON/OFF switches (the output load is maintained in sync with the switch)</Description>
+</Parameter>
+
+<Parameter name="248" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,128" default="131" size="1" />
+<Title>S1/S2 Function Enablement</Title>
+<Description>Sets the function of S1/S2
+1 – The function of sending NIF - OFF:Disabled ON:Enabled
+2 – The function of entering RF power level test mode - OFF:Disabled ON:Enabled
+128 – Allow sending NIF or entering RF power level test mode OFF:Disallowed ON:Allowed</Description>
+</Parameter>
+
+<Parameter name="251" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Control Physical Factory Reset Ability</Title>
+<Description>Controls whether the Action button on device, external switches or WallSwipe can be used to perform a factory reset
+0 – Not allowed
+1 – Allowed</Description>
+</Parameter>
+
+
+</Parameters>
+</Device>
+</xml>
