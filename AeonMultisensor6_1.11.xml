@@ -1,0 +1,543 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Aeon Multisensor 6" version="1.11" url="https://shop.textalk.se/shop/ws27/47027/art2/28580902-7f09d9-ES_-_MultiSensor_6_V1.11.pdf" Manufacturer='0x86' ProductType='0x2' ProductID='0x64'>
+  <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+	<Group ID='40' default='open'>Reporting functionalities</Group>
+	<Group ID='50' default='open'>Limits</Group>
+	<Group ID='100' default='open'>Reporting</Group>
+	<Group ID='200' default='open'>Calibration</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Operation mode</Title>
+<Description>
+Enable/Disable waking up for 10 minutes when re-power on (battery mode) the
+MultiSensor.
+0 = disable.
+1 = enable.
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="10" to="3600" default="240" size="2" />
+<Title>The default PIR time</Title>
+<Description>
+1. The default PIR time is 4 minutes. The Multisensor will send BASIC SET CC
+(0x00) to the associated nodes if no motion is triggered again in 4 minutes.
+2. Range: 10~3600.
+Note:
+1. The time unit is second if the value range is in 10 to 255.
+2. If the value range is in 256 to 3600, the time unit will be minute and its
+value should follow the below rules:
+a. Interval time =Value/60, if the interval time can be divided by 60 and
+without remainder.
+b. Interval time= (Value/60) +1, if the interval time can be divided by 60
+and has the remainder.
+3. Other values will be ignored. 
+</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="5" size="1" />
+<Title>Minimum brightness level</Title>
+<Description>
+Set the sensitivity of motion sensor.
+0 = the current PIR sensitivity level=0. (minimum level)
+1 = the current PIR sensitivity level=1.
+2 = the current PIR sensitivity level=2.
+3 = the current PIR sensitivity level=3.
+4 = the current PIR sensitivity level=4.
+5 = the current PIR sensitivity level=5. (maximum level)
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="1,2" default="1" size="1" />
+<Title>Motion sensor triggered Command</Title>
+<Description>
+Which command would be sent when the motion sensor triggered.
+1 = send Basic Set CC.
+2 = send Sensor Binary Report CC. 
+</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="1" to="254" default="15" size="1" />
+<Title>Wake up time out</Title>
+<Description>Set the timeout of awake after the Wake Up CC is sent out..
+The default value is 15.</Description>
+</Parameter>
+
+<Parameter name="9" group="0" access="r" type="hexcheck">
+<Setting subtype1="radio" subtype2 = "radio" size="2" /> 
+<Value1 values="0,1" default="1" size="1"/>
+<Value2 values="0,1,2" default="1" size="1"/>
+<Title>Power mode</Title>
+<Description>
+Report the current power mode and the product state for battery power mode.
+Value1 (MSB): 0x00=USB power mode, 0x01=Battery power mode.
+Value2 (LSB): 0x00= keep sleep state for Battery power mode, 0x01=keep awake
+for 10 minutes for battery power mode.
+Note: this parameter cannot be used as Set usage.   
+</Description>
+</Parameter>
+
+<Parameter name="39" group="40" access="rw" type="range">
+<Setting from="10" to="50" default="20" size="1">(%)</Setting>
+<Title>Low battery value</Title>
+<Description>
+Configure low battery value.
+Value=10 to 50. (10% to 50%), when the current battery level is lower than this
+value, it will send out the low battery alarm. 
+</Description>
+</Parameter>
+
+<Parameter name="40" group="40" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Selective reporting</Title>
+<Description>
+Enable/disable the selective reporting only when measurements reach a certain
+threshold or percentage set in 41-44 below. This is used to reduce network
+traffic. (0 = disable, 1 = enable)
+Note: If USB power, the Sensor will check the threshold every 10 seconds. If
+battery power, the Sensor will check the threshold when it is waken up.  
+</Description>
+</Parameter>
+
+<Parameter name="41" group="40" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2="radio" size="4" />
+<Value2 values="0x0100,0x0200" default="0x0100" size="2"/>
+<Value1 from="10" to="1000" default="20" size="2"/>
+<Title>Threshold for temp reporting</Title>
+<Description>
+Threshold change in temperature to induce an automatic report.  
+Note: 
+1.The unit is Fahrenheit for US version, Celsius for EU/AU version. 
+2.High byte is (MSB) the threshold value. Low bytes (LSB) represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). 
+3.The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x00140100), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x00140200), the threshold value= 2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out. 
+
+Available value range for Celsius is [10, 1000], for Fahrenheit is [10, 2120].  
+</Description>
+</Parameter>
+
+<Parameter name="42" group="40" access="rw" type="range">
+<Setting from="10" to="100" default="10" size="1" />
+<Title>Threshold change in humidity</Title>
+<Description>
+Threshold change in humidity to induce an automatic report.
+Note:
+1. The unit is %.
+2. The default value is 10, which means that if the current humidity gap is
+more than 10%, it will send out a humidity report.  
+</Description>
+</Parameter>
+
+<Parameter name="43" group="40" access="rw" type="range">
+<Setting from="1" to="5000" default="100" size="2">LUX</Setting>
+<Title>Threshold change in luminance</Title>
+<Description>
+Threshold change in luminance to induce an automatic report.   
+</Description>
+</Parameter>
+
+<Parameter name="44" group="40" access="rw" type="range">
+<Setting from="10" to="100" default="10" size="1" />
+<Title>Threshold change in battery</Title>
+<Description>
+Threshold change in battery level to induce an automatic report.
+Note:
+1. The unit is %.
+2. The default value is 10, which means that if the current battery level gap is
+more than 10%, it will send out a battery report. 
+</Description>
+</Parameter>
+
+<Parameter name="45" group="40" access="rw" type="range">
+<Setting from="1" to="5000" default="2" size="1" />
+<Title>Threshold change in ultraviolet</Title>
+<Description>
+Threshold change in ultraviolet to induce an automatic report.    
+</Description>
+</Parameter>
+
+<Parameter name="46" group="40" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Low temperature alarm</Title>
+<Description>
+Enable/disable to send the alarm report of low temperature(-15℃)
+Value=0, disable.
+Value=1, enable (The MultiSensor will send a report of Multi Level Temperature
+CC to controller if the current temperature is less than -15℃).
+Note: The battery activity will be reduced at low temperatures (-15 degrees
+Celsius and below), which will lead to the product may not work normally. It is
+recommended to use USB power at low temperatures.  
+</Description>
+</Parameter>
+
+<Parameter name="48" group="40" access="rw" type="binarycheck">
+<Setting values="0,1,2,4,8,16,32,64,128" default="0" size="1" />
+<Title>Enable/disable to send a report </Title>
+<Description>
+Enable/disable to send a report when the measurement is more than the upper
+limit value or less than the lower limit value.
+1 = temperature.
+2 = humidity.
+4 = luminance.
+8 = ultraviolet.
+The above bit masks are used to enable/disable to send out a report when the
+measurement is less than the lower limit value.
+
+The below bit masks are used to enable/disable to send out a report when the
+measurement is more than the upper limit value
+16 = temperature.
+32 = humidity.
+64 = luminance.
+128 = ultraviolet.
+Note:
+If USB power, the Sensor will check the limit every 10 seconds. If battery power,
+the Sensor will check the limit when it is waken up.  
+</Description>
+</Parameter>
+
+<Parameter name="49" group="50" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2="radio" size="4" />
+<Value2 values="0x0100,0x0200" default="0x0100" size="2"/>
+<Value1 from="-400" to="1000" default="28" size="2"/>
+<Title>Upper limit value of temperature sensor.</Title>
+<Description>
+Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report.   
+High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). 
+
+1.When unit is Celsius. Upper limit range: -40.0 to 100.0 °C (0xFE70 to 0x03E8). E.g. The default upper limit of EU/AU version is 28.0 °C (0x0118), when the measurement is more than 28.0°C, it will be triggered to send out a temperature sensor report. 
+2.When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 °F (0xFE70 to 0x0848). E.g. The default upper limit of US version is 82.4°F (0X0338), when the measurement is more than 82.4°F, it will be triggered to send out a temperature sensor report. 
+</Description>
+</Parameter>
+
+<Parameter name="50" group="50" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2="radio" size="4" />
+<Value2 values="0x0100,0x0200" default="0x0100" size="2"/>
+<Value1 from="-400" to="1000" default="0" size="2"/>
+<Title>Lower limit value of temperature sensor.</Title>
+<Description>
+Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report.   
+High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). 
+1.When unit is Celsius. Lower limit range: -40.0 to 100.0 °C (0xFE70 to 0x03E8). E.g. The default lower limit of EU/AU version is 0 °C (0x0000), when the measurement is less than 0°C, it will be triggered to send out a temperature sensor report. 
+2.When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 °F (0xFE70 to 0x0848). E.g. The default lower limit of US version is 32.0°F (0x0140), when the measurement is less than 32.0°F, it will be triggered to send out a temperature sensor report.
+</Description>
+</Parameter>
+
+<Parameter name="51" group="50" access="rw" type="range">
+<Setting from="1" to="100" default="60" size="1" />
+<Title>Upper limit value of humidity sensor</Title>
+<Description>
+Set the upper limit value of humidity sensor. When the measurement is more
+than this upper limit, which will trigger to sent out a sensor report.
+Upper limit range: 0 to 100%.
+E.g. The default upper limit is 60%, when the measurement is more than 60%, it
+will be triggered to send out a humidity sensor report.   
+</Description>
+</Parameter>
+
+<Parameter name="52" group="50" access="rw" type="range">
+<Setting from="1" to="100" default="50" size="1" />
+<Title>Lower limit value of humidity sensor</Title>
+<Description>
+Set the lower limit value of humidity sensor. When the measurement is less than
+this lower limit, which will trigger to sent out a sensor report.
+Lower limit range: 0 to 100%.
+E.g. The default lower limit is 50%, when the measurement is less than 50%, it will
+be triggered to send out a humidity sensor report.   
+</Description>
+</Parameter>
+
+<Parameter name="53" group="50" access="rw" type="range">
+<Setting from="0" to="30000" default="1000" size="2" />
+<Title>Upper limit value of Lighting sensor</Title>
+<Description>
+Set the upper limit value of Lighting sensor. When the measurement is more than
+this upper limit, which will trigger to sent out a sensor report.
+Upper limit range: 0 to 30000 Lux.
+E.g. The default upper limit is 1000Lux, when the measurement is more than
+1000Lux, it will be triggered to send out a Lighting sensor report.   
+</Description>
+</Parameter>
+
+<Parameter name="54" group="50" access="rw" type="range">
+<Setting from="0" to="30000" default="100" size="2" />
+<Title>Lower limit value of Lighting sensor</Title>
+<Description>
+Set the lower limit value of Lighting sensor. When the measurement is less than
+this lower limit, which will trigger to sent out a sensor report.
+Lower limit range: 0 to 30000 Lux.
+E.g. The default lower limit is 100Lux, when the measurement is less than 100Lux,
+it will be triggered to send out a Lighting sensor report   
+</Description>
+</Parameter>
+
+<Parameter name="55" group="50" access="rw" type="range">
+<Setting from="1" to="11" default="8" size="1" />
+<Title>Upwer limit value of ultraviolet sensor</Title>
+<Description>
+Set the upper limit value of ultraviolet sensor. When the measurement is more
+than this upper limit, which will trigger to sent out a sensor report.
+Upper limit range: 1 to 11.
+E.g. The default upper limit is 8, when the measurement is more than 8, it will be
+triggered to send out a ultraviolet sensor report.  
+</Description>
+</Parameter>
+
+<Parameter name="56" group="50" access="rw" type="range">
+<Setting from="1" to="11" default="4" size="1" />
+<Title>Lower limit value of ultraviolet sensor</Title>
+<Description>
+Set the lower limit value of ultraviolet sensor. When the measurement is less than
+this upper limit, which will trigger to sent out a sensor report.
+Lower limit range: 1 to 11.
+E.g. The default lower limit is 4, when the measurement is less than 8, it will be
+triggered to send out a ultraviolet sensor report.  
+</Description>
+</Parameter>
+
+<Parameter name="57" group="50" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2="radio" size="2" />
+<Value2 values="0x01,0x02" default="0x01" size="1"/>
+<Value1 from="10" to="255" default="20" size="1"/>
+<Title>Recover limit value of temperature sensor.</Title>
+<Description>
+Set the recover limit value of temperature sensor. 
+Note: 
+1.When the current measurement &gt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &gt;=(Upper limit – Recover limit). 
+2.When the current measurement &lt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &lt;=(Lower limit + Recover limit). 
+3.High byte is the recover limit value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit). 
+4.Recover limit range: 1.0 to 25.5 °C/ °F (0x0101 to 0xFF01 or 0x0102 to 0xFF02). 
+E.g. The default recover limit value is 2.0 °C/°F (0x1401/0x1402), when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 2), the lower limit report would be enabled one time. 
+</Description>
+</Parameter>
+<Parameter name="58" group="50" access="rw" type="range">
+<Setting from="1" to="50" default="5" size="1" >%</Setting>
+<Title>Recover limit value of humidity sensor. </Title>
+<Description>
+Set the recover limit value of humidity sensor. 
+Note: 
+1.When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;=(Upper limit – Recover limit). 
+2.When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;=(Lower limit + Recover limit). 
+3.Recover limit range: 1 to 50% (0x01 to 0x32).
+
+ E.g. The default recover limit value is 5%, when the measurement is less than (Upper limit – 5), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 5), the lower limit report would be enabled one time.
+</Description>
+</Parameter>
+
+<Parameter name="59" group="50" access="rw" type="range">
+<Setting from="1" to="255" default="10" size="1" >x 10 LUX</Setting>
+<Title>Recover limit value of Lighting sensor</Title>
+<Description>
+Set the recover limit value of Lighting sensor. 
+Note: 
+1.When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;=(Upper limit – Recover limit). 
+2.When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;=(Lower limit + Recover limit). 
+3.Unit = 10×Recover limit (Lux) 
+4.Recover limit range: 10 to 2550Lux (0x01 to 0xFF). E.g. The default recover limit value is 100 Lux, when the measurement is less than (Upper limit – 100), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 100), the lower limit report would be enabled one time. 
+</Description>
+</Parameter>
+
+<Parameter name="60" group="50" access="rw" type="range">
+<Setting from="1" to="5" default="2" size="1" />
+<Title>Recover limit value of Ultraviolet sensor.</Title>
+<Description>
+Set the recover limit value of Ultraviolet sensor. 
+Note: 
+1.When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;=(Upper limit – Recover limit). 
+2.When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;=(Lower limit + Recover limit). 3.Recover limit range: 1 to 5 (0x01 to 0x05). 
+E.g. The default recover limit value is 2, when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 2), the lower limit report would be enabled one time. 
+</Description>
+</Parameter>
+
+<Parameter name="61" group="50" access="r" type="binarycheck">
+<Setting values="0,1,2,4,8,16,32,64,128" default="" size="1" />
+<Title>Get the out-of-limit state of the Sensors</Title>
+<Description>
+Get the out-of-limit state of the Sensors. 
+Bit mask = 0, within the limit. 
+Bit mask = 1, out of the limit. 
+
+Bit 0 (1)   = temperature. 
+Bit 1 (2)   = humidity. 
+Bit 2 (4)   = luminance. 
+Bit 3 (8)   = ultraviolet. 
+The above bit masks are used to indicate whether the current measurements of the Sensors are out of the lower limit..  
+The below bit masks are used to indicate whether the current measurements of the Sensors are out of the upper limit. 
+Bit 4 (16)  = temperature. 
+Bit 5 (32)  = humidity. 
+Bit 6 (64)  = luminance. 
+Bit 7 (128) = ultraviolet.
+</Description>
+</Parameter>
+
+<Parameter name="64" group="100" access="rw" type="radio">
+<Setting values="1,2" default="1" size="1" />
+<Title>automatic temperature report unit</Title>
+<Description>
+Set the default unit of the automatic temperature report in parameter 101-103. 
+1 = Celsius. 
+2 = Fahrenheit. 
+</Description>
+</Parameter>
+
+<Parameter name="81" group="100" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Enable/disable the LED blinking.</Title>
+<Description>
+0 = Enable LED blinking. 
+1 = Disable LED blinking only when the PIR is triggered. 
+2 = Completely disable LED for motion, wakeup, and sensor report.
+</Description>
+</Parameter>
+
+<Parameter name="100" group="100" access="w" type="reserved">
+<Setting default="255" size="1" />
+<Title>Set 101-103 to default. </Title>
+<Description>
+
+</Description>
+</Parameter>
+
+<Parameter name="101" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="2"/>
+<Value2 values="0,1,16,32,64,128" default="241" size="2"/>
+<Title>Which report needs to be sent in Report group 1</Title>
+<Description>
+Which report needs to be sent in Report group 1
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+16 = Ultraviolet
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="102" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="2"/>
+<Value2 values="0,1,16,32,64,128" default="0" size="2"/>
+<Title>Which report needs to be sent in Report group 2</Title>
+<Description>
+Which report needs to be sent in Report group 2
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+16 = Ultraviolet
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="103" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="2"/>
+<Value2 values="0,1,16,32,64,128" default="0" size="2"/>
+<Title>Which report needs to be sent in Report group 3</Title>
+<Description>
+Which report needs to be sent in Report group 3
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+16 = Ultraviolet
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="110" group="100" access="w" type="reserved">
+<Setting default="255" size="1" />
+<Title>Set 111-113 to default. </Title>
+<Description>
+
+<Parameter name="111" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 1 </Title>
+<Description>he interval time of sending reports in Report group 1 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC. </Description>
+</Parameter>
+
+<Parameter name="112" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 2 </Title>
+<Description>he interval time of sending reports in Report group 2 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC. </Description>
+</Parameter>
+<Parameter name="113" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 3 </Title>
+<Description>he interval time of sending reports in Report group 3 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC. </Description>
+</Parameter>
+</Description>
+</Parameter>
+
+<Parameter name="201" group="200" access="rw" type="hexcheck">
+<Setting subtype1="range" subtype2="radio" size="2" />
+<Value2 values="1,2" default="1" size="1"/>
+<Value1 from="-128" to="127" default="0" size="1"/>
+<Title>Temperature calibration </Title>
+<Description>
+Temperature calibration (the available value range is [-128,127] or [-12.8°C, 12.7°C]). 
+Note: 
+1.High byte is the calibration value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit) 
+2.The calibration value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the calibration value is 2.0 °C (EU/AU version) or if the value is set to 20 (0x1402), the calibration value is 2.0 °F(US version) 
+3.The calibration value (high byte) = standard value - measure value. E.g.  If measure value =25.3°C and the standard value = 23.2°C, so the calibration value= 23.2°C - 25.3°C= -2.1°C (0xEB). If the measure value =30.1°C and the standard value = 33.2°C, so the calibration value= 33.2°C - 30.1°C=3.1°C (0x1F). 
+</Description>
+</Parameter>
+
+<Parameter name="202" group="200" access="rw" type="range">
+<Setting from="-50" to="50" default="0" size="1" />
+<Title>Humidity sensor calibration</Title>
+<Description>
+Humidity sensor calibration (the available value range is [-50, 50]). 
+The calibration value = standard value - measure value. 
+E.g.  If measure value =80RH and the standard value = 75RH, so the calibration value= 75RH – 80RH= -5RH (0xFB). 
+If the measure value =85RH and the standard value = 90RH, so the calibration value= 90RH – 85RH=5RH (0x05).
+</Description>
+</Parameter>
+<!--
+<Parameter name="203" group="200" access="rw" type="text">
+<Setting from="-1000" to="1000" default="0" size="2" />
+<Title>Luminance sensor calibration</Title>
+<Description>
+Luminance sensor calibration (the available value range is [-1000, 1000]). 
+The calibration value = standard value - measure value. 
+E.g.  If measure value =800Lux and the standard value = 750Lux, so the calibration value= 750 – 800= -50 (0xFFCE). 
+If the measure value =850Lux and the standard value = 900Lux, so the calibration value= 900 – 850=50 (0x0032)
+</Description>
+</Parameter>
+-->
+
+<Parameter name="204" group="200" access="rw" type="range">
+<Setting from="-10" to="10" default="0" size="1" />
+<Title>Ultraviolet sensor calibration</Title>
+<Description>
+Ultraviolet sensor calibration (the available value range is [-10, 10]). 
+The calibration value = standard value - measure value. E.g.  
+If the measure value =7 and the standard value = 9, so the calibration value= 9 – 7=2 (0x02). 
+If measure value =9 and the standard value = 8, so the calibration value= 8 – 9= -1 (0xFE). 
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+
+
+</xml>

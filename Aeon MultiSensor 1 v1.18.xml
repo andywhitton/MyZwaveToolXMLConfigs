@@ -1,0 +1,140 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Aeon Multisensor DSB05" version="1.18" 
+  url="https://help.aeotec.com/support/solutions/articles/6000167581-multisensor-dsb05-gen1-4-in-1-firmware-update-or-downgrade-" Manufacturer="0x86" ProductType="0x2" ProductID="0x5">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+	<Group ID='100' default='open'>Reporting</Group>
+</Groups>
+
+
+<Parameters>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Operation mode</Title>
+<Description>Enable/Disable waking up for 10 minutes when re-power on (battery mode) the
+MultiSensor.
+0 = disable.
+1 = enable.
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="10" to="3600" default="240" size="2" />
+<Title>PIR On time</Title>
+<Description>1. The default PIR time is 4 minutes. The Multisensor will send BASIC SET CC
+(0x00) to the associated nodes if no motion is triggered again in 4 minutes.
+2. Range: 10~3600.
+Note:
+1. The time unit is second if the value range is in 10 to 255.
+2. If the value range is in 256 to 3600, the time unit will be minute and its
+value should follow the below rules:
+a. Interval time =Value/60, if the interval time can be divided by 60 and
+without remainder.
+b. Interval time= (Value/60) +1, if the interval time can be divided by 60
+and has the remainder.
+3. Other values will be ignored.</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="5" size="1" />
+<Title>Minimum brightness level</Title>
+<Description>Set the sensitivity of motion sensor.
+0 = the current PIR sensitivity level=0. (minimum level)
+1 = the current PIR sensitivity level=1.
+2 = the current PIR sensitivity level=2.
+3 = the current PIR sensitivity level=3.
+4 = the current PIR sensitivity level=4.
+5 = the current PIR sensitivity level=5. (maximum level)
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="1,2" default="1" size="1" />
+<Title>Motion sensor triggered Command</Title>
+<Description>Which command would be sent when the motion sensor triggered.
+1 = send Basic Set CC.
+2 = send Sensor Binary Report CC. 
+</Description>
+</Parameter>
+
+
+<Parameter name="101" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="3"/>
+<Value2 values="1,32,64,128" default="225" size="1"/>
+<Title>Which report needs to be sent in Report group 1</Title>
+<Description>Which report needs to be sent in Report group 1
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="102" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="3"/>
+<Value2 values="1,32,64,128" default="0" size="1"/>
+<Title>Which report needs to be sent in Report group 2</Title>
+<Description>Which report needs to be sent in Report group 2
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="103" group="100" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2="binarycheck" size="4" />
+<Value1 default="0" size="3"/>
+<Value2 values="1,32,64,128" default="0" size="1"/>
+<Title>Which report needs to be sent in Report group 3</Title>
+<Description>Which report needs to be sent in Report group 3
+
+MSB x 3 bytes = reserved and set to zero
+LSB:
+1 = Battery
+32 = Temperature
+64 = Humidity
+128 = Luminance
+</Description>
+</Parameter>
+
+<Parameter name="111" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 1 </Title>
+<Description>The interval time of sending reports in Report group 1 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC.
+</Description>
+</Parameter>
+
+<Parameter name="112" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 2 </Title>
+<Description>The interval time of sending reports in Report group 2 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC.
+</Description>
+</Parameter>
+
+<Parameter name="113" group="100" access="rw" type="time">
+<Setting from="5" to="‭2678400‬"  default="3600" size="4" >Seconds</Setting>
+<Title>The interval time of sending reports in Report group 3 </Title>
+<Description>The interval time of sending reports in Report group 3 (Valid values 0x05-0x28DE80). 
+1.The unit of interval time is second if USB power. 
+2.If battery power, the minimum interval time is 60 minutes by default,  for example, if the value is set to be more than 5 and less than 3600, the interval time is 60 minutes, if the value is set to be more than 3600 and less than 7200, the interval time is 120 minutes. You can also change the minimum interval time to 4 minutes via setting the interval value(3 bytes) to 240 in Wake Up Interval Set CC.
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>
