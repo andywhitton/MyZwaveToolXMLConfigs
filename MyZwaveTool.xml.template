@@ -1,0 +1,188 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Device Friendly name" version="Device version" 
+  url="URL to documentation - no &amp; signs" Manufacturer="Hex code for Manufacturer" ProductType="Hex code for Product type" ProductID="Hex code for Product ID">
+<!-- Group example--> 
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='20' default='closed'>Switches</Group>
+    <Group ID='30' default='closed'>Advanced functionality</Group>
+    <Group ID='40' default='closed'>Alarms</Group>
+    <Group ID='50' default='closed'>Active power and energy reports</Group>
+ </Groups>
+ 
+
+<Parameters>
+<!-- Common parameters:
+	name	: parameter number - integer
+	group	: Group number - integer - referencing group ID in groups list
+	access 	: rw or r - possiblity to read only, or read and write value. controlls availabilty of set and get buttons
+	type	: selection type used to set value. Each type has a strict set of settings parameters how include
+	Setting : defined parameters for type
+	Title	: Parameter Title used
+	Description : Full description for parameter
+-->
+<!--Type Range
+This type takes a from and a to value and creates a dropdown list for user to select from
+<Setting:
+	from 	: start number in the range (integer)
+	to		: end number in the range	(integer)
+	default	: the default value according to documentation (integer)
+	size	: the byte size of parameter (integer)
+-->
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="1" to="98" default="1" size="1" />
+<Title>Minimum brightness level</Title>
+<Description> percentage level of brightness(parameter is set automatically during the calibration process) The parameter can be changed manually after the calibration.</Description>
+</Parameter>
+
+<!--Type Range+
+This type takes a from and a to value + one or more singel values and creates a dropdown list for user to select from
+<Setting:
+	from 	: start number in the range (integer)
+	to		: end number in the range	(integer)
+	values	: comma separeted integers 
+	default	: the default value according to documentation (integer)
+	size	: the byte size of parameter (integer)
+-->
+<Parameter name="6" group="0" access="rw" type="range+">
+<Setting from="10" to="100" values="0,255" default="1" size="2" > (optional settings suffix text to display) </Setting>
+<Title>Automatic control - time of a dimming step</Title>
+<Description>This parameter defines the time of single dimming step set in parameter 5 during the automatic control.</Description>
+</Parameter>
+
+<!--Type Radio
+<Setting:
+	values	: comma separeted integers 
+	default	: the default value according to documentation (ingeger)
+	size	: the byte size of parameter (integer)
+-->
+<Parameter name="9" group="0" access="rw" type="radio">
+<Setting  values="0,1" default="1" size="1" />
+<Title>State of the device after a power failure</Title>
+<Description>The Dimmer 2 will return to the last state before power failure.
+0 - the Dimmer 2 does not save the state before a power failure, it returns to „off” position
+1 - the Dimmer 2 restores its state before power failure</Description>
+</Parameter>
+
+<!-- Type Time
+<Setting:
+	from 	: start number in the timerange (integer)
+	to		: end number in the timerange	(integer)
+	default	: the default value according to documentation (integer)
+	size	: the byte size of parameter (integer)
+-->
+<Parameter name="10" group="0" access="rw" type="time">
+<Setting from="0" to="32767" default="0" size="2" >in seconds</Setting>
+<Title>Timer functionality (auto - off)</Title>
+<Description>This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway.
+0 - Function disabled
+1-32767 - time to turn off measured in seconds (1s-9.1h)
+</Description>
+</Parameter>
+
+<!-- Type Time+
+<Setting:
+	from 	: start number in the timerange (integer)
+	to		: end number in the timerange	(integer)
+	values	: comma separeted integers as added time options
+	default	: the default value according to documentation (integer)
+	size	: the byte size of parameter (integer)
+-->
+<Parameter name="11" group="0" access="rw" type="time+">
+<Setting from="30" to="32767" values="0" default="0" size="2" >in seconds</Setting>
+<Title>Timer functionality (auto - off)</Title>
+<Description>This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway.
+0 - Function disabled
+30-32767 - time to turn off measured in seconds (30s-9.1h)
+</Description>
+</Parameter>
+
+<!--Type Binarycheck
+used to summarise binary on / off "switches"
+
+examples
+if all set to on:
+MSB 1 1 1 1 1 1 LSB = binary number 111111 = 63
+32 + 16 + 8 + 4 + 2 + 1 = 63
+
+MSB 0 0 0 1 0 1 LSB = binary number 000101 = 5
+if only 1 + 4 = 5
+
+	Values 	: comma separeted integer values of the binary bit to show:
+				00000001	= 1
+				00000010	= 2
+				00000100	= 4
+				00001000	= 8
+				00010000	= 16
+				00100000	= 32
+	default	: integer value of default number (63 = 00111111 - all on in the example below)
+
+<Setting:
+	values	:	integers representing the bit value when active by is self
+	default	:	default value - integer
+	size	: 	byte size of parameter
+-->
+<Parameter name="30" group="30" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32" default="63" size="1" />
+<Title> Active alarms</Title>
+<Description>Define Z-Wave network alarms to which the Wall Plug will respond
+1 - general alarm
+2 - smoke alarm
+4 - CO alarm
+8 - CO2 alarm
+16 - high temperature alarm
+32 - flood alarm</Description>
+</Parameter>
+
+
+<!--
+will generate 2 fields for selections. the fields can have different types and behaviour and are combined before being sent to the device.
+
+<Setting:
+	subtype1 | subtype2 Options:
+		="radio" 
+		="range"
+		="range+"
+		="text" 
+		="binarycheck"
+		="reserved" - means only default value is read and always used.
+	size="2" - Total size of parameter
+	
+	
+<Value1 & Value2:
+	attributes need to be set according to the requirement of the same standalone type.
+	(values, from, to, default and size)
+	default : default value
+	Size	: size of syptype
+-->
+<Parameter name="39" group="30" access="rw" type="hexcheck">
+<Setting subtype1="radio" subtype2 = "radio" size="2" /> 
+<Value1 values="0x00,0x01" default="0x01" size="1"/>
+<!--<Value1 values="0,1" default="1" size="1"/> as alternative-->
+
+<Value2 values="0,1,2" default="1" size="1"/>
+<Title>Power mode</Title>
+<Description>
+Report the current power mode and the product state for battery power mode.
+Value1 (MSB): 0x00=USB power mode, 0x01=Battery power mode.
+Value2 (LSB): 0x00= keep sleep state for Battery power mode, 0x01=keep awake
+for 10 minutes for battery power mode.
+Note: this parameter cannot be used as Set usage.   
+</Description>
+</Parameter>
+
+
+<!--Type Text
+for large number ranges where a drop down or time(seconds) makes no sense...
+recuires from and 2 fields and only alows for integers to be entered.
+-->
+<Parameter name="49" group="30" access="rw" type="text">
+<Setting from='1' to='65535' default="600" size="3" />
+<Title>Active flashing alarm time.</Title>
+<Description>Available configuration parameters: [1-65535][ms]</Description>
+</Parameter>
+
+<!-- end xml-->
+  </Parameters>
+</Device>
+</xml>

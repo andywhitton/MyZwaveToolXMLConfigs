@@ -1,0 +1,109 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Philio PST02 4 in 1 Sensor" version="1.24" 
+  url="https://static1.squarespace.com/static/5c1afbd1266c07479bc41525/t/611b660f656eac5a62c3060c/1629185553631/PST02_Manual-A1-20210721.pdf" Manufacturer="0x13C" ProductType="0x2" ProductID="0xC">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+</Groups>
+
+
+<Parameters>
+
+<Parameter name="2" group="0" access="rw" type="range+">
+<Setting from="0" to="100" values="255" default="255" size="1" />
+<Title>Basic Set Level</Title>
+<Description>Setting the BASIC command value to turn on the light.  The 0xFF(-1) means turn on the light.  For dimmer equipment 1 to 100 means the light strength.
+255 = Light On
+0 - 100 = Set dimming level</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="0" to="99" default="70" size="1" />
+<Title>PIR Sensitivity</Title>
+<Description>Sets the sensitivity of the PIR sensor to movement
+0 = Disables motion detection
+1 - 99 = Sets the sensitivity with 1 being the lowest sensitivity and 99 the highest.
+High sensitivity means can detect a long distance, but it will trigger more easily to minor things.</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="99" size="1" />
+<Title>Light Threshold</Title>
+<Description>This parameter sets the light threshold above which the light will not be activated.
+0 = Turn off illumination detected function.  Light will never be turned on.
+1 - 99 = Light level threshold where 1 means the darkest and 99 the brightest
+100 = Turn off illumination detected function.  Light will always be turned on.</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="range">
+<Setting from="0" to="63" default="0" size="1" />
+<Title>Operation Mode</Title>
+<Description>This parameter defines the Operating Mode of the sensor.
+ 1 = On: Security Mode                   Off: Home Automation Mode
+ 2 = On: Test Mode                       Off: Normal Mode
+ 4 = On: Door/Window Function Disabled   Off: Enabled
+ 8 = On: Celcius                         Off: Fahrenheit
+16 = On: Disable illumination reporting  Off: Enabled
+32 = On: Disable temperature reporting   Off: Enabled</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="range">
+<Setting from="0" to="127" default="4" size="1" />
+<Title>Multi-Sensor Function Switch</Title>
+<Description>This parameter defines the functioning of the sensor.
+Bit Value
+0   1 = On: Disable magnetic integrate illumination                Off: Enable
+1   2 = On: Disable PIR integrate illumination                     Off: Normal Mode
+2   4 = On: Disable magnetic integrate PIR                         Off: Enabled
+    When Bit 2 is 0 (Enabled)
+3   8 = On: In the same room as the light                          Off: In a different room
+4  16 = On: Disable 5 second turn off when door/window is closed   Off: Enable
+    When Bit 2 is 0 (Enabled)
+5  32 = On: Disable auto turn off the light, after                 Off: Enabled
+            door/window opened to turn on the light   
+6  64 = On: Monitor temperature                                    Off: Do not monitor temperature
+   A temperature report will be issued if the temperature moves by 3 degrees Fahrenheit.
+   A report every 64 seconds will be issued if the temperature exceeds 140 degrees.
+</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="3" to="127" default="3" size="1" />
+<Title>PIR Re-Detect Interval Time</Title>
+<Description>In security mode, sets the time interval without any further detection after PIR motion has been detected.  8 seconds per tick. A minimum of 3 ticks (24 seconds) and a maximum of 127 ticks (~17 minutes).  Setting the suitable value to prevent overly frequent triggering which will consume the battery.
+3 - 127 = Number of ticks the PIR is not active at 8 seconds per tick.</Description>
+</Parameter>
+
+<Parameter name="9" group="0" access="rw" type="range">
+<Setting from="4" to="127" default="4" size="1" />
+<Title>Light On Duration</Title>
+<Description>Sets the length of time the light will be on for before an off command is sent in ticks; 8 seconds per tick.  Minimum of 4 ticks (32 seconds) and a maximum of 127 ticks (~17)</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" />
+<Title>Auto Report Battery Interval</Title>
+<Description>Sets the interval between Battery auto reports in 30 minute ticks. 12 (default) is 6 hours. 48 therefore is daily.</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" />
+<Title>Auto Report Door/Window State Interval</Title>
+<Description>Sets the interval between door/window state auto reports in 30 minute ticks. 12 (default) is 6 hours.</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" />
+<Title>Auto Report Illumination Interval</Title>
+<Description>Sets the interval between illumination level auto reports in 30 minute ticks. 12 (default) is 6 hours.</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" />
+<Title>Auto Report Temperature Interval</Title>
+<Description>Sets the interval between temperature auto reports in 30 minute ticks. 12 (default) is 6 hours.</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

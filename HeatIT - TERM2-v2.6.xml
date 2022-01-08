@@ -1,0 +1,203 @@
+<xml version="1.0" encoding="UTF-8"> 
+<Device name="HEATIT TERM2 Z-WAVE THERMOSTAT" url="https://www.thermo-floor.no/" Manufacturer='0x19B' ProductType='0x3' ProductID='0x202' version="2.6">
+  <Groups>
+    <Group ID='0' default='open'>HeatIT TERM2 Z-Wave Thermostat</Group>
+ </Groups>
+
+<Parameters>
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,11" default="0" size="1" />
+<Title>Operation mode</Title>
+<Description> The thermostat have several operation modes
+0 - Off. (Default)
+1 - Heating mode
+2 - Cooling mode (not implemented)
+11 - Energy saving heating mode</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="1" size="1" />
+<Title>Sensor mode</Title>
+<Description>The thermostat has a range of choices when it comes to sensors
+0 - F-Mode : the thermostat is using a connected floor sensors
+1 - A-Mode : the thermostat is using the internal room sensor 
+2 - AF-Mode: the thermostat is using the internal room sensor for regulation, but limiting max temp based on floor sensor (se FHI) 
+3 - A2-Mode: the thermostat is using a connected external room sensor
+4 - P-Mode : the thermostat is set to Power regulator mode, see parameter 12 (P setting)
+5 - FP-Mode: the thermostat is set to "Floor sensor + Power regulator" mode
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="0" size="1" />
+<Title>External/floor sensor type</Title>
+<Description>Select the right ohm value for your external/floor sensor
+0 - 10k NTC
+1 - 12k NTC
+2 - 15k NTC
+3 - 22k NTC
+4 - 33k NTC
+5 - 47k NTC</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="0" to="30" default="5" size="1" />
+<Title>Hysteresis</Title>
+<Description>In this parameter you are able to make changes to the hysteresis in the thermostat. This means that you can changes the hysteresis from 0,3C (3) up to max 3,0C (30).
+
+1 = Mode1, level-controlled input
+2 = mode2, falling-edge controlled input
+3 = Mode3, rising edge controlled input (standard)</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="50" size="2" >1/10 degree</Setting>
+<Title>FLo, Floor min limit</Title>
+<Description>Min Floor temperature, 5C=50 and 40C=400</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="400" size="2" />
+<Title>FHi, Floor max limit</Title>
+<Description>Max Floor temperature, 5C=50 and 40C=400</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="50" size="2" />
+<Title>ALo, Air min limit</Title>
+<Description>Min Air/room temperature, 5C=50 and 40C=400</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="400" size="2" />
+<Title>AHi, Air max limit</Title>
+<Description>Max Air/room temperature, 5C=50 and 40C=400</Description>
+</Parameter>
+
+<Parameter name="9" group="0" access="rw" type="range">
+<Setting from="0" to="9" default="0" size="1" />
+<Title>PLo, FP-mode P setting</Title>
+<Description>Min temperature in Power Reg Mode</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="210" size="2" />
+<Title>CO mode setpoint</Title>
+<Description>CO - mode: Is used for normal use, 5C=50 and 40C=400. </Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="180" size="2" />
+<Title>ECO mode setpoint</Title>
+<Description>ECO - mode: Is a setback mode that you can use if the thermostat is installed in a room or a house that is rarely used, 5C=50 and 40C=400.</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="range">
+<Setting from="0" to="10" default="2" size="1" />
+<Title>P setting</Title>
+<Description>Power regulator mode setting</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="range">
+<Setting from="50" to="400" default="210" size="2" />
+<Title>COOL setpoint</Title>
+<Description>COOL - mode: Only if cooling is enabled, 5C=50 and 40C=400</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="range">
+<Setting from="-40" to="40" default="0" size="1" />
+<Title>Room sensor calibration</Title>
+<Description>Selects the room sensor (internal) tempreature calibration:
+-4.0 - 4.0 degree C</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="range">
+<Setting from="-40" to="40" default="0" size="1" />
+<Title>Floor sensor calibration</Title>
+<Description>Selects the floor sensor tempreature calibration:
+-4.0 - 4.0 degree C</Description>
+</Parameter>
+<Parameter name="16" group="0" access="rw" type="range">
+<Setting from="-40" to="40" default="0" size="1" />
+<Title>External sensor calibration</Title>
+<Description>Selects the external sensor tempreature calibration:
+-4.0 - 4.0 degree C</Description>
+</Parameter>
+
+<Parameter name="17" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Temperature display</Title>
+<Description>Selects which temperature is shown in the display
+0 - Display setpoint temperature (Default)
+1 - Display measured temperature</Description>
+</Parameter>
+
+<Parameter name="18" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="50" size="1" />
+<Title>Button brightness - dimmed state</Title>
+<Description>Configure the brightness of the buttons, in dimmed state</Description>
+</Parameter>
+
+<Parameter name="19" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="100" size="1" />
+<Title>Button brightness - active state</Title>
+<Description>Configure the brightness of the buttons, in active state</Description>
+</Parameter>
+
+<Parameter name="20" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="50" size="1" />
+<Title>Display brightness - dimmed state</Title>
+<Description>Configure the brightness of the display, in dimmed state.</Description>
+</Parameter>
+
+<Parameter name="21" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="100" size="1" />
+<Title>Display brightness - active state</Title>
+<Description>Configure the brightness of the display, in active state.</Description>
+</Parameter>
+
+<Parameter name="22" group="0" access="rw" type="time">
+<Setting from="0" to="32767" default="60" size="2" >Seconds</Setting>
+<Title>Temperature report interval</Title>
+<Description>Time interval between consecutive temperature reports. Temperature reports
+can be also sent as a result of polling.
+0 - Reporting of temperatures disabled
+1 seconds - 32767 seconds. Default is 60 seconds</Description>
+</Parameter>
+
+<Parameter name="23" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="10" size="1" />
+<Title> Temperature report hysteresis</Title>
+<Description>The temperature report will be sent if there is a difference in temperature
+value from the previous value reported, defined in this parameter (hysteresis).
+Temperature reports can be also sent as a result of polling.
+1 - 100 - 0.1C - 10.0C. Default is 10 (1.0C)</Description>
+</Parameter>
+
+<Parameter name="24" group="0" access="rw" type="time">
+<Setting from="0" to="32767"  default="60" size="2" >Seconds</Setting>
+<Title>Meter report interval</Title>
+<Description>Time interval between consecutive meter reports. Meter reports can be also
+sent as a result of polling.
+VALUE DESCRIPTION
+0 Reporting of metering values is disabled
+1 - 32767 - 1 seconds - 32767 seconds. Default is 60 seconds)</Description>
+</Parameter>
+
+<Parameter name="25" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="1" > kWh</Setting>
+<Title> Meter report delta value</Title>
+<Description>Delta value in kWh between consecutive meter reports. Meter reports can be
+also sent as a result of polling.
+VALUE DESCRIPTION
+0 - 255 : A delta value of 0 - 25,5 kWh will result in a metering
+report. Default is 10 (1.0 kWh)</Description>
+</Parameter>
+
+
+</Parameters>
+
+</Device>
+
+
+</xml>

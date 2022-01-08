@@ -1,0 +1,79 @@
+<xml version='1.0'>
+<Device name="ZEN15 v2 Heavy Duty Smart Switch" version="" url="https://www.getzooz.com/zooz-zen15-power-switch.html" Manufacturer="0x27A" ProductType="0x101" ProductID="0xD">
+    <Groups>
+        <Group ID="0" default="open">Basic functionalities</Group>
+    </Groups>
+    <Parameters>
+        <Parameter name="20" group="0" access="rw" type="radio">
+            <Setting  values="0,1" default="1" size="1" />
+            <Title>Overload Protection</Title>
+            <Description>Turns device off once voltage exceeds 16.5A for over 5 seconds. Changing this setting is NOT recommended.</Description>
+        </Parameter>
+        <Parameter name="21" group="0" access="rw" type="radio">
+            <Setting  values="0,1,2" default="0" size="1" />
+            <Title>On/Off Status Recovery After Power Failure</Title>
+            <Description>Sets the recovery state for your device if power outage occurs.
+            0 - Last state
+            1 - On
+            2 - Off</Description>
+          </Parameter>
+          <Parameter name="24" group="0" access="rw" type="radio">
+            <Setting  values="0,1,2" default="1" size="1" />
+            <Title>On/Off Status Change Notification</Title>
+            <Description>When to report switch status changes to controller and associated devices.
+            0 - Do not send change change reports.
+            1 - Send reports when status is changed by button press or Z-Wave.
+            2 - Only send status report when button is pressed on device.</Description>
+        </Parameter>
+        <Parameter name="27" group="0" access="rw" type="radio">
+            <Setting  values="0,1,2,3" default="1" size="1" />
+            <Title>LED Behavior</Title>
+            <Description>0 - LED will display power consumption at all times.
+            1 - LED will display power consumption when the device is ON.
+            2 - LED will display power consumption for only 5 seconds when the device is turned on or off. 
+            3 - LED is OFF except for inclusion, exclusion, and Z-Wave range test.</Description>
+        </Parameter>    
+        <Parameter name="30" group="0" access="rw" type="radio">
+            <Setting  values="0,1" default="1" size="1" />
+            <Title>Manual Control</Title>
+            <Description>Setting this parameter to 0 will disable the physical button on the outlet.</Description>
+        </Parameter>
+        <Parameter name="151" group="0" access="rw" type="text">
+            <Setting from="0" to="65535" default="50" size="2" />
+            <Title>Watts Report Percentage Threshold</Title>
+            <Description>Report electrical power (W) when value changes by defined amount (in watts) compared with previous report.
+            Values: 0 to 65535. 0 - disabled (will not send report based on this setting).</Description>
+        </Parameter>
+        <Parameter name="152" group="0" access="rw" type="text">
+            <Setting from="0" to="255" default="10" size="1" />
+            <Title>Watts Report Percentage Threshold</Title>
+            <Description>Report electrical power (W) when value changes by defined percentage compared with previous report.
+            Values: 0 to 255. 0 - disabled (will not send report based on this setting).</Description>
+        </Parameter>
+        <Parameter name="171" group="0" access="rw" type="time+">
+            <Setting from="5" to="2678400" values="0" default="30" size="4" >in seconds</Setting>
+            <Title>Watts Report Frequency</Title>
+            <Description>How often to report electrical power (W) to controller and associated devices.
+            0 - disables reporting of this value.</Description>
+        </Parameter>
+        <Parameter name="172" group="0" access="rw" type="time+">
+            <Setting from="5" to="2678400" values="0" default="300" size="4" >in seconds</Setting>
+            <Title>kWh Report Frequency</Title>
+            <Description>How often to report cumulative electrical power (kWh) to controller and associated devices.
+            0 - disables reporting of this value.</Description>
+        </Parameter>
+        <Parameter name="173" group="0" access="rw" type="time+">
+            <Setting from="5" to="2678400" values="0" default="300" size="4" >in seconds</Setting>
+            <Title>Voltage Report Frequency</Title>
+            <Description>How often to report electrical voltage (V) to controller and associated devices.
+            0 - disables reporting of this value.</Description>
+        </Parameter>
+        <Parameter name="174" group="0" access="rw" type="time+">
+            <Setting from="5" to="2678400" values="0" default="300" size="4" >in seconds</Setting>
+            <Title>Amperes Report Frequency</Title>
+            <Description>How often to report electrical current (A) to controller and associated devices.
+            0 - disables reporting of this value.</Description>
+        </Parameter>
+    </Parameters>
+</Device>
+</xml>

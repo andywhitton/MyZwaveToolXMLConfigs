@@ -1,0 +1,180 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro Roller Shutter" version="22.22" 
+  url="https://manuals.fibaro.com/content/manuals/en/FGRM-222/FGRM-222-EN-A-v1.00.pdf" Manufacturer="0x10F" ProductType="0x301" ProductID="0x1001">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='1' default='closed'>Alarm functionalities</Group>
+    <Group ID='2' default='closed'>Power and Energy Reporting</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="10" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4" default="1" size="1" />
+<Title>Roller Shutter operating mode</Title>
+<Description>This parameter determines how the roller shutter functions.
+Available settings:
+0 – Roller Blind Mode, without positioning
+1 – Roller Blind Mode, with positioning
+2 – Venetian Blind Mode, with positioning
+3 – Gate Mode, without positioning
+4 – Gate Mode, with positioning</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="text">
+<Setting from="0" to="65535" default="150" size="2" />
+<Title>Venetian Blind Lamellas Full Turn</Title>
+<Description>This parameter determines the full turn of the venetian blind lamellas, when parameter 10 is set to 2
+Range 0 – 65535</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="1" size="1" />
+<Title>Set lamellas back to previous position</Title>
+<Description>This parameter influences lamellas positioning in various situations.  Only applicable if parameter 10 is in Mode 2 
+Available settings:
+0 – Lamellas return to previously set position only in case of the main controller operation
+1 – As per 0 plus with momentory switch operation, or when the limit switch is reached
+2 – As per 1 plus after receiving a "STOP" control frame (Switch Multilevel Stop)</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Switch Type</Title>
+<Description>In Roller Blind or Venetian Blind Mode (Param 10) this parameter defines the type of switchg attached.
+Available settings
+0 – Two Way Momentary Switch
+1 – Toggle Switch
+2 – Single Way Momentary Switch, only connected to S1</Description>
+</Parameter>
+
+<Parameter name="17" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="1" />
+<Title>Time to switch off Roller Shutter are reaching the limit</Title>
+<Description>This parameter determines how the Roller Shutter responds to the limit being reached.
+In Roller Blind and Venetian Modes (Param 10) this parameter determines when the Roller SHutter will turn off after reaching the limit in 1/10 of a second. e.g. a value of 10 = 1s.
+
+In Gate Mode (Param 10) the parameter determines a time period after which a gate will start closing after S2 contact has been disconnected.  In this mode time to turn off the Roller Shutter after reaching a limit switch is fixed at 3 seconds.  However a value of 0 means the gate will not auto close.</Description>
+</Parameter>
+
+<Parameter name="18" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="1" />
+<Title>Motor operation detection</Title>
+<Description>This parameter defines the power threshold in Watts to be used to determine when the limit is reached.
+Available settings:
+    0 – Limit is not detected
+1-255 – Watts</Description>
+</Parameter>
+
+<Parameter name="22" group="0" access="rw" type="range">
+<Setting from="0" to="65535" default="240" size="2" />
+<Title>Motor operation time</Title>
+<Description>This parameter defines the time period for the motor to continue operation.
+Available settings:
+      0 – Function is disabled
+1-65535 – Time in seconds e.g. 240 = 4 minutes</Description>
+</Parameter>
+
+
+<Parameter name="29" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Calibrate Roller Shutter</Title>
+<Description>This parameter forces the Roller Shutter to perform a calibration if the Operating mode is 1,2 or 4 (param 10).
+Calibration is achieved by determining the Limit and setting this to be 100%.
+Available settings:
+0 – Do nothing
+1 – Perform calibration - After calibration the parameter is reset to 0 automatically</Description>
+</Parameter>
+
+
+
+<Parameter name="30" group="1" access="rw" type="radio">
+<Setting values="0,1,2" default="2" size="1" />
+<Title>Reaction to General Alarm</Title>
+<Description>This parameter determines how the device will react to General Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – Open blind
+2 – Close blind</Description>
+</Parameter>
+
+<Parameter name="31" group="1" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Reaction to Flood Alarm</Title>
+<Description>This parameter determines how the device will react to Flood Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – Open blind
+2 – Close blind</Description>
+</Parameter>
+
+<Parameter name="32" group="1" access="rw" type="radio">
+<Setting values="0,1,2" default="1" size="1" />
+<Title>Reaction to CO/CO2/Smoke Alarm</Title>
+<Description>This parameter determines how the device will react to CO, CO2 or Smoke frame.
+Available settings:
+0 – alarm frame is ignored
+1 – Open blind
+2 – Close blind</Description>
+</Parameter>
+
+<Parameter name="33" group="1" access="rw" type="radio">
+<Setting values="0,1,2" default="1" size="1" />
+<Title>Reaction to Heat Alarm</Title>
+<Description>This parameter determines how the device will react to Heat Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – Open blind
+2 – Close blind</Description>
+</Parameter>
+
+<Parameter name="35" group="1" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Manage Lamellas in response to Alarm</Title>
+<Description>This parameter determines how the device will react to all alarms when in Venetian Blind Mode (2).
+Available settings:
+0 – Do not change lamellas position - lamellas return to the last set position
+1 – Set lamellas to their extreme position</Description>
+</Parameter>
+
+
+<Parameter name="40" group="2" access="rw" type="range">
+<Setting from="0" to="100" default="10" size="1" />
+<Title>Power reports</Title>
+<Description>This parameter determines the minimum change in consumed power that will result in sending new power report to the main controller.
+Available settings:
+    0 – reports are disabled
+1-100 – Percentage change in power</Description>
+</Parameter>
+
+<Parameter name="41" group="2" access="rw" type="text">
+<Setting from="0" to="65535" default="3600" size="2" />
+<Title>Minimum time between power reports</Title>
+<Description>This parameter determines minimum time that has to elapse before sending new power report to the main controller.
+Available settings:
+      0 – Reports are disabled
+1-65535 – Report interval in seconds</Description>
+</Parameter>
+
+<Parameter name="43" group="2" access="rw" type="range">
+<Setting from="0" to="254" default="10" size="1" />
+<Title>Energy reports</Title>
+<Description>This parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller.
+Available settings:
+    0 – Reports are disabled
+1-254 – (0.01-2.54 kWh) – Change in energy</Description>
+</Parameter>
+
+<Parameter name="44" group="2" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Measuring energy consumed by the device itself</Title>
+<Description>This parameter determines whether energy metering should include the amount of energy consumed by the device itself. Results are being added to energy reports for first endpoint.
+Available settings:
+0 – Inactive
+1 – Active</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

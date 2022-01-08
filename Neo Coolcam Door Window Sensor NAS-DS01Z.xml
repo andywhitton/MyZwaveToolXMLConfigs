@@ -1,0 +1,28 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Neo Coolcam Door/Window Sensor NAS-DS01Z" version="3.80" 
+  url="https://fccid.io/Z52NAS-DS01Z/User-Manual/User-manual-2888944" Manufacturer="0x258" ProductType="0x3" ProductID="0x1082">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="text">
+<Setting from="0" to="65535" default="0" size="2" />
+<Title>Configuring the OFF Delay</Title>
+<Description>This configuration parameter that can be used to adjust the amount of delay before the OFF command is transmitted. This parameter can be configured with the value of 0 through 65535, where 0 means send OFF command immediately and 65535 means 65535 seconds of delay.
+Available Settings： 0-65535 (in seconds, each 1s)
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="range+">
+<Setting from="0" to="99" values="255" default="255" size="1" />
+<Title>Basic Set Level</Title>
+<Description>Basic Set Command will be sent where contains a value when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set Command of which value is decisive as to how bright of dim level of lamp module shall be.
+Available Settings: 0, 1-99 or 255
+0 OFF, Alarm cancelling or turning a device off
+1-99 Dim Level (Multilevel Switch Device)
+255 ON (Binary Switch Device)
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

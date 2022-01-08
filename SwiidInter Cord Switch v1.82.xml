@@ -1,0 +1,20 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="SwiidInter Cord Switch" version="1.82" 
+  url="http://www.swiid.com/medias/documents/ZCS-User-s-manual-vBAT2-02.12.2014.pdf" Manufacturer="0x166" ProductType="0x100" ProductID="0x100">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,255" default="255" size="1" />
+<Title>Switch All</Title>
+<Description>This parameter determines the function of the physical switch as:
+0 – disabled
+1 – only able to switch on
+2 – only able to switch off
+255 - Fully enabled (Default)
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

@@ -1,0 +1,190 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro RGBW Controller" version="25.25" 
+  url="https://manuals.fibaro.com/rgbw/" Manufacturer="0x10F" ProductType="0x900" ProductID="0x1000">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,255" default="255" size="1" />
+<Title>ALL ON / ALL OFF function activation</Title>
+<Description>Available settings:
+0 – ALL ON inactive, ALL OFF inactive
+1 – ALL ON inactive, ALL OFF active
+2 – ALL ON active, ALL OFF inactive
+255 – ALL ON active, ALL OFF active
+</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4" default="0" size="1" />
+<Title>ALL ON / ALL OFF function activation</Title>
+<Description>Available settings:
+0 – NORMAL (DIMMER) – BASIC SET/SWITCH_MULTILEVEL_START/STOP
+1 – NORMAL (RGBW) – COLOR_CONTROL_SET/START/STOP_STATE_CHANGE
+2 – NORMAL (RGBW) – COLOR_CONTROL_SET
+3 – BRIGHTNESS – BASIC SET/SWITCH_MULTILEVEL_START/STOP
+4 – RAINBOW (RGBW) – COLOR_CONTROL_SET
+</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Outputs state change mode</Title>
+<Description>Available settings:
+0 – MODE1 (related parameters: 9-step value, 10-time between steps)
+1 – MODE2 (related parameters: 11-time to change value, relevant for RGB/RGBW)
+</Description>
+</Parameter>
+
+<Parameter name="9" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="1" size="1" />
+<Title>Step value for MODE1</Title>
+<Description>Available settings: 1-255
+</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="text">
+<Setting from="0" to="60000" default="10" size="2" />
+<Title>Time between steps for MODE1</Title>
+<Description>Available settings:
+0 – immediate change of state
+1-60000 – (1-60000ms)
+</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="range+">
+<Setting from="193" to="255" values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191" default="67" size="1" />
+<Title>Time for changing from start to end value</Title>
+<Description>Available settings:
+0 - immediate change
+1-63 - 20-126- [ms] value*20ms
+65-127 - 1-63 [s] [value-64]*1s
+129-191 - 10-630[s] [value-128]*10s
+193-255 - 1-63[min] [value-192]*1min
+</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="range">
+<Setting from="3" to="255" default="255" size="1" />
+<Title>Maximum brightening level</Title>
+<Description>Available settings: 3-255
+Maximum brightening level cannot be lower than Minimum dimming level.
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="range">
+<Setting from="2" to="255" default="2" size="1" />
+<Title>Minimum dim level</Title>
+<Description>Available settings: 2-255
+<!-- The manual says 3-255, but the default value is 2 therefore 2-255 -->
+Minimum dimming level cannot be higher than Maximum brightening level.
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="text">
+<Setting from="0" to="65535" default="4369" size="2" />
+<Title>Inputs / Outputs configuration</Title>
+<Description>Parameter is relevant for main controllers other than Home Center only.
+Each 4bit refers to given IN/OUT (channel) settings.
+Available settings: 0-65535
+Note: Use the interactive calculator on the manual page or https://manuals.fibaro.com/ras-rgbw-controller-en.pdf.
+</Description>
+</Parameter>
+
+<Parameter name="16" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>State of the device after a power failure</Title>
+<Description>Available settings:
+0 – the device does not save the state before a power failure and turns off the load
+1 – the device restores its state before power failure
+</Description>
+</Parameter>
+
+<Parameter name="30" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="0" size="1" />
+<Title>Alarm of any type (general alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm)</Title>
+<Description>Available settings:
+0 – INACTIVE – the device doesn’t respond to alarm frames
+1 – ALARM ON – the device turns on once alarm is detected (all channels set to 99%)
+2 – ALARM OFF – the device turns off once alarm is detected (all channels set to 0%)
+3 – ALARM PROGRAM – alarm sequence turns on (program selected in parameter 38)
+</Description>
+</Parameter>
+
+<Parameter name="38" group="0" access="rw" type="range">
+<Setting from="1" to="10" default="10" size="1" />
+<Title>Alarm sequence program</Title>
+<Description>Available settings: 1-10 (alarm program number)
+</Description>
+</Parameter>
+
+<Parameter name="39" group="0" access="rw" type="text">
+<Setting from="1" to="65534" default="600" size="2" />
+<Title>Active program alarm time</Title>
+<Description>Available settings: 1-65534 (1-65534s)
+</Description>
+</Parameter>
+
+<Parameter name="42" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Command class reporting Outputs status change</Title>
+<Description>Available settings:
+0 – reporting as a result of inputs and controllers actions (SWITCH MULTILEVEL)
+1 – reporting as a result inputs actions (SWITCH MULTILEVEL)
+2 – reporting as a result of inputs actions (COLOR CONTROL)
+</Description>
+</Parameter>
+
+<Parameter name="43" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="5" size="1" />
+<Title>Reporting 0-10V analog inputs change threshold</Title>
+<Description>Parameter defines a value by which input voltage must change in order to be reported to the main controller. New value is calculated based on last reported value.
+Available settings: 1-100 – (0.1-10V)
+</Description>
+</Parameter>
+
+<Parameter name="44" group="0" access="rw" type="text">
+<Setting from="0" to="65534" default="30" size="2" />
+<Title>Power load reporting frequency</Title>
+<Description>Reports will be sent if last reported value differs from the current value or in case of polling.
+Available settings: 0-65534 (1 – 65534 seconds; 0 = reports are not sent – reports will only be sent in case of polling or at turning OFF the device)
+</Description>
+</Parameter>
+
+<Parameter name="45" group="0" access="rw" type="range">
+<Setting from="1" to="254" default="10" size="1" />
+<Title>Reporting changes in energy consumed by controlled devices</Title>
+<Description>New, reported energy value is calculated based on last reported value.
+Available settings: 1-254 (0.01kWh – 2.54kWh)
+</Description>
+</Parameter>
+
+<Parameter name="71" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Response to BRIGHTNESS set to 0%</Title>
+<Description>Available settings:
+0 – illumination colour set to white (all channels controlled together)
+1 – last set colour is memorized
+</Description>
+</Parameter>
+
+<Parameter name="72" group="0" access="rw" type="range">
+<Setting from="1" to="10" default="1" size="1" />
+<Title>Starting predefined program when device set to work in RGB/RGBW mode</Title>
+<Description>Parameter is relevant for main controllers other than Home Center only.
+Available settings: 1-10 (animation program number)
+</Description>
+</Parameter>
+
+<Parameter name="73" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Triple click action</Title>
+<Description>Available settings:
+0 – NODE INFO control frame is sent
+1 – starting favourite program
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

@@ -1,0 +1,87 @@
+<xml version="1.0" encoding="UTF-8"> 
+<Device name="HeatIT Z-DIM" url="https://www.thermo-floor.no/media/multicase/documents/_tfasdokumentasjon/heatit%20controls/heatit%20z-dim/manual_heatit_z-dim_fw%201.0_ver2019-b_eng.pdf" Manufacturer='0x19B' ProductType='0x3' ProductID='0x2200' version="1.0">
+  <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+ </Groups>
+
+<Parameters>
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="1" to="200" default="0" size="1" />
+<Title>Connected Load</Title>
+<Description>The parameter defines the value of connected load. Refer to Paragraph 8 ”Power Metering”. 
+0 = Not configured (Default)
+1 - 200 =  1-200 Watts connected load
+</Description>
+</Parameter>
+<Parameter name="2" group="0" access="rw" type="range">
+<Setting from="1" to="98" default="20" size="1" />
+<Title> Minimum Dim level.</Title>
+<Description>The parameter defines the lowest dimming level of the dimmer. The value must be lower than parameter 3 ”Maximum Dim Level”. 
+1 - 98  = 1% - 98% Default is 20 (20%)
+</Description>
+</Parameter>
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="2" to="99" default="85" size="1" />
+<Title> Maximum Dim level.</Title>
+<Description>The parameter defines the highest dimming level of the dimmer.The value must be higher than parameter 2 ”Minimum Dim Level”.
+2 - 99 =   2% - 99% Default is 85 (85%)</Description>
+</Parameter>
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="5" to="255" default="15" size="2" />
+<Title>Total steps.</Title>
+<Description>The parameter defines how many steps it should take to dim from minimum to maximum dim level (One round = 20 steps).
+5 - 255 = 5-255 steps. Default is 15 (3/4 round)
+</Description>
+</Parameter>
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title> Double press function.</Title>
+<Description>The parameter defines the double press functionality.
+0 = Central Scene notification (Default)
+1 = Dim to highest level
+</Description>
+</Parameter>
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting  values="0,1" default="1" size="1" />
+<Title>Scene controller.</Title>
+<Description>The parameter enables scene controller.
+0 = Disabled 
+1 = Active (Default)
+</Description>
+</Parameter>
+<Parameter name="7" group="0" access="rw" type="range">
+<Setting from="0" to="99" default="0" size="1" />
+<Title> Switch ON level.</Title>
+<Description>The parameter defines the dimming level when restored from the OFF state by push button.
+0 = Restores last dim level (Default)
+1 - 99 = 1% - 99%
+</Description>
+</Parameter>
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="1" size="2" />
+<Title> Dimming Duration</Title>
+<Description>The parameter defines how long it takes to dim to the desired level.Note! Only Multilevel Switch Command Class is affected by this parameter. 
+0 = Disabled
+1 - 127 = Duration in seconds (1 - 127 seconds. Default is 1)
+128 - 255 = Duration in minutes (1 - 127 minutes)
+</Description>
+</Parameter>
+<Parameter name="9" group="0" access="rw" type="time">
+<Setting  from="0" to="32767" default="60" size="2" >in seconds</Setting>
+<Title>. Meter Report Interval.</Title>
+<Description>The parameter defines the report interval for Power Metering.
+0 = Disabled
+30 - 32 767 = Duration in seconds (30 - 32 767. Default is 60)</Description>
+</Parameter>
+<Parameter name="10" group="0" access="rw" type="range">
+<Setting from="1" to="99" default="50" size="1" />
+<Title> Power restore level.</Title>
+<Description>The parameter defines the initial dimming level after power loss.
+1 - 99 = 1% - 99%  Default is 50 (50%)
+</Description>
+</Parameter>
+  </Parameters>
+</Device>
+
+
+</xml>

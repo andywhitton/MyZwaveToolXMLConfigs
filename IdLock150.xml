@@ -1,0 +1,77 @@
+<xml version='1.0'>
+<Device name="IDLock 150" version="1" url="http://www.idlock.com" Manufacturer='0x373' ProductType='0x3' ProductID='0x1'>
+  <Groups>
+    <Group ID='0' default='open'>IDLock 150</Group>
+ </Groups>
+<!--not complete-->
+<Parameters>
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="0" size="1" />
+<Title>Door Lock Mode</Title>
+<Description> Auto lock Mode, Manual lock mode, Activate Away Mode, Deactivate Away Mode.
+If value is 0x02 (Enable Away, Manual lock) and the door is unlocked value will be set to 0x00. 
+If value is 0x03 (Enable Away, Auto lock) and the door is unlocked value will be set to 0x01.
+- Default Value: 1 (Disable Away/Auto Lock Mode)
+0 - Disable Away Manual Lock
+1 - Disable Away Auto Lock
+2 - Enable Away Manual Lock
+3 - Enable Away Auto Lock
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Door Hinge Position Mode</Title>
+<Description>
+- Default Value: 0 (Right Handle)
+Name Parameter Number Size Value Description Door Hinge Position
+0 Right Handle
+1 Left Handle
+</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="1,2,3,4,5,6" default="5" size="1" />
+<Title>Hysteresis</Title>
+<Description>Door Audio Volume Level
+This parameter is a set only parameter. If the value is changed locally on the door lock,this value will not change.
+- Default Value: 5
+0 No Sound
+1 Level 1
+2 Level 2
+3 Level 3
+4 Level 4
+5 Level 5
+6 Max. Sound Level
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Door ReLock Mode</Title>
+<Description>Door ReLock Mode
+- Default Value: 1 (Enabled)
+0 Disabled
+1 Enabled </Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,8,9,10" default="0" size="1" />
+<Title>Service PIN Mode</Title>
+<Description>A configuration get command on this parameter returns the latest set parameter value (set by Z-wave).
+This is a set only value, if changed locally on keypad these values are not changed on Z-wave module. 
+Value 5, 6 and 7 are for future use on door lock.
+- Default Value: 0 ( Deactivated )
+0 Deactivated
+1 1 times used
+2 2 times used
+3 5 times used
+4 10 times used
+
+8 12 Hours used
+9 24 Hours used</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

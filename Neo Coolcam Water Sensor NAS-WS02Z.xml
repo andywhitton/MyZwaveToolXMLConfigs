@@ -1,0 +1,69 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Neo Coolcam Water Sensor NAS-WS02Z" version="2.54" 
+  url="https://fccid.io/Z52NAS-WS02Z/User-Manual/15-NAS-WS02Z-UserMan-US-r1-4384664" Manufacturer="0x258" ProductType="0x3" ProductID="0x1085">
+
+<Parameters>
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="120" size="1" />
+<Title>Configuring Alarm Duration Time</Title>
+<Description>This configuration parameter that can be used to adjust the time for beep and LED turned on when water leakage is detected. If this parameter is set to '0', the
+beep and LED will be turn on always until water leakage is not detected.
+Available Settings: 0-255min.
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="1" size="1" />
+<Title>Configure Alarm Interval</Title>
+<Description>This parameter defines beep on/off interval time when water leakage is detected.
+Available Settings: 1-255min.
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="60" size="1" />
+<Title>Configure First Alarm On Time Duration</Title>
+<Description>This parameter defines beep on duration first time when water leakage is detected.
+Available Settings: 1-255s
+</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="5" to="255" default="5" size="1" />
+<Title>Configure Alarm on Time Duration</Title>
+<Description>This parameter defines beep on duration after first beep on when water leakage is detected.
+Available Settings: 5-255s
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Configure Alarm Enable/Disable</Title>
+<Description>This parameter defines beep on is enabled or disabled when water leakage is detected.
+Available Settings: 0,1
+'0' indicate beep on is disable, but LED will be turned on when water leakage detected.
+'1' indicate beep on is enabled, the BEEP and LED will be turned on when water leakage detected.
+</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Configure Water Leakage Detected Enable/Disable</Title>
+<Description>This parameter defines the function than water leakage detect is enabled or disabled.
+Available Settings: 0,1
+'0' indicate disable water leakage detect.
+'1' indicate enable water leakage detect.</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="range+">
+<Setting from="0" to="99" values="255" default="255" size="1" />
+<Title>Basic Set Level</Title>
+<Description>Basic Set Command will be sent where contains a value when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a
+lamp module is received the Basic Set Command of which value is decisive as to how bright of dim level of lamp module shall be.
+Available Settings: 0-99,255
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

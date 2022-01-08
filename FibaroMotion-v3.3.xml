@@ -1,0 +1,338 @@
+<xml version="1.0" encoding="UTF-8"> 
+<Device name="Fibaro Motion" url="https://manuals.fibaro.com/content/manuals/en/FGMS-001/FGMS-001-EN-T-v2.1.pdf" Manufacturer='0x10F' ProductType='0x801' ProductID='0x1002' version="3.3">
+  <Groups>
+    <Group ID='0' default='open'>Motion sensor behavior - Basic functionalities</Group>
+    <Group ID='20' default='closed'>Motion sensor operation - Tamper</Group>
+    <Group ID='40' default='closed'>Motion sensor operation - Ilumination</Group>
+    <Group ID='60' default='closed'>Motion sensor operation - Temperature</Group>
+	<Group ID='80' default='closed'>Motion sensor operation - Advanced functionality</Group>
+ </Groups>
+
+<Parameters>
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="8" to="255" default="15" size="1" />
+<Title>Motion Sensor's sensitivity</Title>
+<Description>The lower the value, the more sensitive the PIR sensor.
+
+Available settings: 8-255</Description>
+</Parameter>
+<Parameter name="2" group="0" access="rw" type="range">
+<Setting from="0" to="15" default="15" size="1" />
+<Title>Motion Sensor's blind time (insensitivity)</Title>
+<Description>Period of time through which the PIR sensor is “blind” (insensitive) to motion. After this time period the PIR sensor will be again able to detect motion. The longer the insensitivity period, the longer the battery life. If the sensor is required to detect motion quickly, the time period may be shortened. The time of insensitivity should be shorter that the time period set in parameter 6.
+
+Available settings: 0-15
+Formula to calculate the time: time [s] = 0.5 x (value + 1)
+Default setting: 15 (8 seconds)</Description>
+</Parameter>
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="0" to="3" default="1" size="1" />
+<Title>PIR sensor pulse counter</Title>
+<Description>Sets the number of moves required for the PIR sensor to report motion. The lower the value, the less sensitive the PIR sensor. It’s not recommended to modify this parameter settings.
+
+0 - 1 pulse 
+1 - 2 pulses 
+2 - 3 pulses 
+3 - 4 pulses
+Formula to calculate the number of pulses: pulses = (value + 1)
+Default setting: 1 (2 pulses)</Description>
+</Parameter>
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="0" to="3" default="2" size="1" />
+<Title>PIR sensor window time</Title>
+<Description>Period of time during which the number of moves set in parameter 3 must be detected in order for the PIR sensor to report motion. The higher the value, the more sensitive the PIR sensor. It’s not recommended to modify this parameter setting.
+ 0 - 4 seconds 
+ 1 - 8 seconds 
+ 2 - 12 seconds 
+ 3 - 16 seconds 
+Available settings: 0-3
+Formula to calculate the time: time [s] = 4 x (value + 1)
+Default setting: 2 (12 seconds)</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="time">
+<Setting from="0" to="32767" default="30" size="2" >in Seconds</Setting>
+<Title>Motion alarm cancellation delay</Title>
+<Description>Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter. Any motion detected during the cancellation delay time countdown will result in the countdown being restarted. In case of small values, below 10 seconds, the value of parameter 2 must be modified (PIR sensor’s “Blind Time”).
+
+Available settings: 1-32767 in seconds
+Default setting: 30 (30 seconds)</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>PIR sensor operating mode</Title>
+<Description>The parameter determines the part of day in which the PIR sensor will be active. This parameter influences only the motion reports and associations. Tamper, light intensity and temperature measurements will be still active, regardless of this parameter settings.
+
+Available settings:
+0 – PIR sensor always active
+1 – PIR sensor active during the day only
+2 – PIR sensor active during the night only
+Default setting: 0</Description>
+</Parameter>
+<Parameter name="9" group="0" access="rw" type="text">
+<Setting  from="0" to="32767" default="200" size="2" >>Lux</Setting>
+<Title>Night/day</Title>
+<Description>The parameter defines the difference between night and day, in terms of light intensity, used in parameter 8.
+
+Available settings: 1-65535
+Default setting: 200 (200 lux)</Description>
+</Parameter>
+<Parameter name="12" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>BASIC Command Class frame configuration</Title>
+<Description>The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.
+
+Available settings:
+0 – BASIC ON and BASIC OFF command frames sent in Basic Command Class.
+1 – only the BASIC ON command frame sent in Basic Command Class.
+2 – only the BASIC OFF command frame sent in Basic Command Class.
+Default setting: 0
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="range+">
+ <Setting from="0" to="100" values="255" default="255" size="1" />
+ <Title>BASIC ON command frame value</Title>
+ <Description>The value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.
+
+Available settings: 0-255
+Default setting: 255 </Description>
+</Parameter>
+
+<Parameter name="16" group="0" access="rw" type="range">
+<Setting from="0" to="100" values="255" default="0" size="2" />
+<Title>BASIC OFF command frame value</Title>
+<Description>The command frame sent at the moment of motion alarm cancellation, after the cancellation delay time, specified in parameter 6, has passed.
+
+The value of 0 allows to turn a device OFF while the value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.
+
+Available settings: 0-100 + 255
+Default setting: 0</Description>
+</Parameter>
+
+<Parameter name="18" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="15" size="1" />
+<Title>Associations in Z-Wave network Security Mode</Title>
+<Description>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st group “Lifeline”.
+
+0 - none of the groups sent as secure 
+1 - 2nd group sent as secure 
+2 - 3rd group sent as secure 
+4 - 4th group sent as secure 
+8 - 5th group sent as secure </Description>
+</Parameter>
+
+<Parameter name="20" group="20" access="rw" type="range">
+<Setting  from="0" to="121" default="20" size="1" />
+<Title>Tamper sensitivity</Title>
+<Description>The parameter determines the chages in forces acting on the FIBARO Motion Sensor resulting in tamper alarm beig reported – g-force acceleration.
+
+Available settigs: 
+0-121 (0.08 – 2g; multiply by 0.016g) 
+0 = tamper inactive)
+Default setting: 20 (0.4g) </Description>
+</Parameter>
+<Parameter name="22" group="20" access="rw" type="time">
+<Setting from="1" to="32767" default="30" size="2"> in Seconds</Setting>
+<Title>Tamper alarm cancellation delay</Title>
+<Description>Time period after which a tamper alarm will be cancelled in the main controller and associated devices. Any tampering detected during this period will not extend the delay
+
+Available settings: 1-32767 
+Default setting: 30 (seconds)</Description>
+</Parameter>
+
+<Parameter name="24" group="20" access="rw" type="radio">
+<Setting values ="0,1,2" default="0" size="1" />
+<Title>Tamper operating modes</Title>
+<Description>This parameter determines function of the tamper and sent reports. It is an advanced feature serving much more functions than just detection of tampering.
+
+Available settings:
+0 - tamper only 
+1 - tamper and earthquake detector 
+2 - tamper and orientation in space
+Default setting: 0</Description>
+</Parameter>
+
+<Parameter name="25" group="20" access="rw" type="radio">
+<Setting values ="0,1" default="1" size="1" />
+<Title>Tamper - alarm cancellation</Title>
+<Description>This parameter allows to disable cancellation of the tamper alarm.
+
+Available settings:
+0 - do not send tamper cancellation report 
+1 - send tamper cancellation report 
+Default setting: 1</Description>
+</Parameter>
+
+<Parameter name="28" group="20" access="rw" type="radio">
+<Setting values ="0,1" default="0" size="1" />
+<Title>Tamper - broadcast mode</Title>
+<Description>The parameter determines whether the tamper alarm frame will or will not be sent in broadcast mode. Alarm frames sent in broadcast mode can be received by all of the devices within range (if they accept such frames), but not repeated by them. 
+
+Available settings:
+0 - tamper alarm sent to 3rd association group 
+1 - tamper alarm sent in broadcast mode
+Default setting: 0</Description>
+</Parameter>
+
+<Parameter name="29" group="20" access="rw" type="radio">
+<Setting values ="0,1" default="0" size="1" />
+<Title>Tamper - backward compatible broadcast mode </Title>
+<Description>The parameter determines whether the backward compatible tamper alarm frame will or will not be sent in broadcast mode. Alarm frames sent in broadcast mode can be received by all of the devices within range (if they accept such frames), but not repeated by them.
+This parameter provides backward compatibility with controllers not supporting Z-Wave+.
+
+Available settings:
+0 - backward compatible tamper alarm sent to 5th association group 
+1 - backward compatible tamper alarm sent in broadcast mode 
+Default setting: 0</Description>
+</Parameter>
+
+<Parameter name="40" group="40" access="rw" type="text">
+<Setting from="0" to="32767" default="200" size="2" >Lux</Setting>
+<Title>Illumination report threshold</Title>
+<Description>The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller.
+
+Available settings: 0-32767  (1 – 32767) lux; 0 = reports are not sent)
+Default setting: 200 (200 lux)</Description>
+</Parameter>
+<Parameter name="42" group="40" access="rw" type="time">
+<Setting from="0" to="32767" default="3600" size="2" >in Seconds</Setting>
+<Title>Illumination report interval</Title>
+<Description>Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity.
+
+Available settings: 
+1-32767 (1 – 32767 seconds) 
+0 = reports are not sent
+Default setting: 36000 (1h)</Description>
+</Parameter>
+
+
+<Parameter name="60" group="60" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="2" >in celcius</Setting>
+<Title>Temperature report threshold</Title>
+<Description>The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller.
+
+Available settings: 0-255 (0.1 – 25.5°C; 0 = reports are not sent)
+Default setting: 10 (1°C)
+</Description>
+</Parameter>
+<Parameter name="62" group="60" access="rw" type="time">
+<Setting from="0" to="32767" default="900" size="2" >in Seconds</Setting>
+<Title>Interval of temperature measuring</Title>
+<Description>The parameter determines how often the temperature will be measured. The shorter the time, the more frequently the temperature will be measured, but the battery life will shorten.
+
+Available settings: 0-32767 (1 – 32767 seconds; 0 = temperature will not be measured)
+Default setting: 900 (900 seconds)</Description>
+</Parameter>
+<Parameter name="64" group="60" access="rw" type="time">
+<Setting from="0" to="32767" default="0" size="2" >in Seconds</Setting>
+<Title>Temperature reports interval</Title>
+<Description>The parameter determines how often the temperature reports will be sent to the main controller.
+
+Available settings: 0-32767 (1 – 32767 seconds; 0 = reports are not sent)
+Default setting: 0</Description>
+</Parameter>
+<Parameter name="66" group="60" access="rw" type="range">
+<Setting from="-100" to="100" default="0" size="2" />
+<Title>Temperature offset</Title>
+<Description>The value to be added to the actual temperature, measured by the sensor (temperature compensation).
+-1000 - 1000 (-100 - 100°C, 0.1°C step)
+Default setting: 0</Description>
+</Parameter>
+
+<Parameter name="80" group="80" access="rw" type="range">
+<Setting from="0" to="26" default="10" size="1" />
+<Title>Visual LED indicator signalling mode</Title>
+<Description>The parameter determines the way in which LED diode behaves after motion has been detected.
+
+    Values from 1 to 9 = single long blink at the moment of reporting motion. No other motion will be indicated until alarm is cancelled.
+    Values from 10 to 18 = single long blink at the moment of reporting motion and one short blink each time the motion is detected again.
+    Values from 19 to 26 = single long blink at the moment of reporting motion and two short blinks each time the motion is detected again.
+
+Available settings:
+0 – LED inactive
+1 – LED colour depends on the temperature. Set by parameters 86 and 87
+2 – Flashlight mode – LED glows in white for 10 seconds
+3 – White
+4 – Red
+5 – Green
+6 – Blue
+7 – Yellow
+8 – Cyan
+9 – Magenta
+10 – LED colour depends on the temperature. Set by parameters 86 and 87
+11 – Flashlight mode – LED glows in white through 10 seconds. Each next detected motion extends the glowing by next 10 seconds
+12 – White
+13 – Red
+14 – Green
+15 – Blue
+16 – Yellow
+17 – Cyan
+18 – Magenta
+19 – LED colour depends on the temperature. Set by parameters 86 and 87
+20 – White
+21 – Red
+22 – Green
+23 – Blue
+24 – Yellow
+25 – Cyan
+26 – Magenta
+Default setting: 10</Description>
+</Parameter>
+<Parameter name="81" group="80" access="rw" type="range">
+<Setting from="0" to="100" default="50" size="1" />
+<Title>LED brightness</Title>
+<Description>The parameter determines the brightness of LED when indicating motion.
+
+Available settings: 0-100 (1 – 100%; 0 = brightness determined by the ambient lighting – see parameters 82 and 83)
+Default setting: 50</Description>
+</Parameter>
+<Parameter name="82" group="80" access="rw" type="text">
+<Setting from="0" to="32767" default="100" size="2" />
+<Title> Visual LED indicator - illuminance for low indicator brightness</Title>
+<Description>The parameter is relevant only when the parameter 81 is set to 0.
+
+Available settings: 0 to parameter 83 value
+Default setting: 100 (100 lux)</Description>
+</Parameter>
+<Parameter name="83" group="80" access="rw" type="text">
+<Setting from="1" to="32767" default="1000" size="2" />
+<Title>Ambient illumination level above which LED brightness is set to 100%</Title>
+<Description>The parameter is relevant only when the parameter 81 is set to 0.
+
+Available settings: 0 to parameter 83 value
+Default setting: 1000 (1000 lux)</Description>
+</Parameter>
+<Parameter name="86" group="80" access="rw" type="range">
+<Setting from="0" to="255" default="18" size="2" />
+<Title>Minimum temperature resulting in blue LED illumination</Title>
+<Description>This parameter is relevant only when parameter 80 has been properly configured.
+
+Available settings: 0 to parameter 87 value (degrees Celsius)
+Default setting: 18 (18°C)
+</Description>
+</Parameter>
+<Parameter name="87" group="80" access="rw" type="range">
+<Setting from="1" to="255" default="28" size="2" />
+<Title>Maximum temperature resulting in red LED illumination</Title>
+<Description>This parameter is relevant only when parameter 80 has been properly configured.
+
+Available settings: parameter 86 value to 255 (degrees Celsius)
+Default setting: 28 (28°C)</Description>
+</Parameter>
+<Parameter name="89" group="80" access="rw" type="radio">
+<Setting values ="0,1" default="1" size="1" />
+<Title>LED indicating tamper alarm</Title>
+<Description>Indicating mode resembles a police car (white, red and blue).
+
+Available settings:
+0 – LED does not indicate tamper alarm.
+1 – LED indicates tamper alarm.
+Default setting: 1</Description>
+</Parameter>
+  </Parameters>
+</Device>
+
+
+</xml>
