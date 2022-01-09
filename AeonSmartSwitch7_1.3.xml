@@ -1,0 +1,354 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Aeon Smart Switch 7" version="1.3" url="https://help.aeotec.com/helpdesk/attachments/6118457833" Manufacturer='0x371' ProductType='0x103' ProductID='0x17'>
+  <Groups>
+    <Group ID='0' default='open'>Basic Functionalities</Group>
+	<Group ID='30' default='open'>Advanced Functionalities</Group>
+	<Group ID='40' default='open'>Reporting Functionalities</Group>
+	<Group ID='50' default='open'>Limits</Group>
+	<Group ID='80' default='open'>Alarms</Group>
+	<Group ID='100' default='open'>Reporting</Group>
+	<Group ID='200' default='open'>Calibration</Group>
+	<Group ID='240' default='open'>Reset</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="0" to="2" default="2" size="1" />
+<Title>LED Setting</Title>
+<Description>
+This parameter is used to change how the LED reacts.
+0 = Disable LED Completely (Only Used for Inclusion, Exclusion and Factory Reset).
+1 = Turn On Between Particular Times (Night Light Function). See Parameters 2 and 3 to set times.
+2 = Display On/Off Status.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="2" group="30" access="rw" type="text">
+<Setting from="0" to="2316633" default="1572864" size="4" />
+<Title>Night Light On Time</Title>
+<Description>
+This parameter is used to configure the night light ON time. User can then change Color CC to change the Night Light color (default = red). Only useful when parameter 1 is set to 1.
+Format is in hexadecimal, but must be expressed in decimal. 0x00180000 (1572864) = 6:00:00 pm 
+0xRRHHMMSS (RR = Reserved, HH = Hours, MM = Minutes, SS = Seconds)
+
+https://www.rapidtables.com/convert/number/hex-to-decimal.html
+</Description>
+</Parameter>
+
+
+
+<Parameter name="3" group="30" access="rw" type="text">
+<Setting from="0" to="2316633" default="393216" size="4" />
+<Title>Night Light Off Time</Title>
+<Description>
+This parameter is used to configure the night light OFF time. User can then change Color CC to change the Night Light color (default = red). Only useful when parameter 1 is set to 1.
+Format is in hexadecimal, but must be expressed in decimal. 0x00060000 (393216) = 6:00:00 am 
+0xRRHHMMSS (RR = Reserved, HH = Hours, MM = Minutes, SS = Seconds)
+
+https://www.rapidtables.com/convert/number/hex-to-decimal.html
+</Description>
+</Parameter>
+
+
+
+<Parameter name="4" group="0" access="rw" type="text">
+<Setting from="0" to="255" default="0" size="1" />
+<Title>LED Blink Duration</Title>
+<Description>
+Sets the duration that the action button LED blinks in unit seconds.
+0     = Disables LED Blinking
+1-255 = Sets the duration that the LED will blink from 1-255 seconds.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="5" group="0" access="rw" type="text">
+<Setting from="5" to="24" default="5" size="1" />
+<Title>LED Blink Speed</Title>
+<Description>
+Sets the number of action button LED blinks per second.
+5-24 = Number of blinks per second.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="6" group="40" access="rw" type="text">
+<Setting from="0" to="3000" default="100" size="2" />
+<Title>Sent Alert When In Use</Title>
+<Description>
+Sends a Scene Activation Set command when energy draw exceeds this value, expressed in unit watts.
+0      = Do not send a Scene Activation Set command.
+1-3000 = Send a Scene Activation Set command when energy draw exceeeds this number of watts. 
+</Description>
+</Parameter>
+
+
+
+<Parameter name="7" group="0" access="rw" type="range">
+<Setting from="0" to="2" default="0" size="1" />
+<Title>Plug Always On Status</Title>
+<Description>
+Prevents the plug from being turned off via the action button.
+0 = The plug will operate as normal, and can be turned on or off using the action button.
+1 = The action button is disabled for on and off commands, but will still work for network inclusion/exclusion.
+2 = The device will ignore any commands to turn it off and will also ignore any use of the action button, with the exception of network inclusion/exclusion.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="0" to="2" default="0" size="1" />
+<Title>Power Recovery Option</Title>
+<Description>
+Sets the device recovery action after a power outage. 
+0 = Sets plug to last status before power outage.
+1 = Sets plug to power on after power recovery.
+2 = Sets plug to power off after power recovery.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="9" group="30" access="rw" type="text">
+<Setting from="1" to="255" default="255" size="1" />
+<Title>Group 3 Scene ID</Title>
+<Description>
+Sets the Scene ID when Parameter 6 issues a Scene Activation Set Command.
+1-255 = Scene ID number that is activated when the Scene Activation Set Command is issued to the device.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="10" group="40" access="rw" type="text">
+<Setting from="0" to="1800" default="1800" size="2" />
+<Title>Overload Protection</Title>
+<Description>
+Turns off switch when current of load connected bypasses the maximum allowed power regardless of always on setting.
+0      = Disable overload protection.
+1-1800 = When wattage detected above this setting value, switch will be turned off immediately, and overload notification is sent.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="11" group="40" access="rw" type="text">
+<Setting from="0" to="255" default="135" size="1" />
+<Title>Overvoltage Protection</Title>
+<Description>
+Turns off switch when voltage exceeds setting value.
+0     = Disable overvoltage protection.
+1-255 = When voltage detected above this setting value, switch will be turned off immediately, and overvoltage notification is sent.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="19" group="40" access="rw" type="text">
+<Setting from="0" to="255" default="5" size="1" />
+<Title>Threshold Check Time</Title>
+<Description>
+Sets the period of threshold checks.
+0     = Disable all threshold settings.
+1-255 = Set number of seconds on how fast device checks for threshold settings.
+</Description>
+</Parameter>
+
+
+<Parameter name="20" group="40" access="rw" type="text">
+<Setting from="0" to="10000" default="100" size="2" />
+<Title>kWh Automatic Report Threshold</Title>
+<Description>
+Energy kWh threshold automatic reporting enable/disable. This value is Unit kWh, expressed in decimal.
+0       = Disable kWh automatic threshold reporting.
+1-10000 = Sets the threshold when an automatic energy report for kWh is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="21" group="40" access="rw" type="text">
+<Setting from="0" to="2500" default="0" size="2" />
+<Title>Wattage Automatic Report Threshold</Title>
+<Description>
+Energy wattage threshold automatic reporting enable/disable. This value is Unit W, expressed in decimal.
+0       = Disable wattage automatic threshold reporting.
+1-2500 = Sets the threshold when an automatic energy report for watts is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="22" group="40" access="rw" type="text">
+<Setting from="0" to="150" default="0" size="1" />
+<Title>Amperage Automatic Report Threshold</Title>
+<Description>
+Energy amperage threshold automatic reporting enable/disable. This value is Unit A, expressed in decimal.
+0       = Disable amperage automatic threshold reporting.
+1-150 = Sets the threshold when an automatic energy report for amps is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="23" group="40" access="rw" type="text">
+<Setting from="0" to="65535" default="600" size="2" />
+<Title>Wattage Automatic Report Time</Title>
+<Description>
+Energy wattage automatic reporting time enable/disable. This value is unit seconds, expressed in decimal.
+Default Value = 600 (10 minutes)
+0       = Disable wattage automatic threshold reporting.
+1-65535 = Sets the threshold when an automatic energy report for watts is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="24" group="40" access="rw" type="text">
+<Setting from="0" to="65535" default="600" size="2" />
+<Title>kWh Automatic Report Time</Title>
+<Description>
+Energy kWh automatic reporting time enable/disable. This value is unit seconds, expressed in decimal.
+Default Value = 600 (10 minutes)
+0       = Disable kWh automatic threshold reporting.
+1-65535 = Sets the threshold when an automatic energy report for kWh is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="25" group="40" access="rw" type="text">
+<Setting from="0" to="65535" default="600" size="2" />
+<Title>Voltage Automatic Report Time</Title>
+<Description>
+Energy voltage automatic reporting time enable/disable. This value is unit seconds, expressed in decimal.
+Default Value = 600 (10 minutes)
+0       = Disable voltage automatic threshold reporting.
+1-65535 = Sets the threshold when an automatic energy report for voltage is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="26" group="40" access="rw" type="text">
+<Setting from="0" to="65535" default="600" size="2" />
+<Title>Amperage Automatic Report Time</Title>
+<Description>
+Energy amperage automatic reporting time enable/disable. This value is unit seconds, expressed in decimal.
+Default Value = 600 (10 minutes)
+0       = Disable voltage automatic threshold reporting.
+1-65535 = Sets the threshold when an automatic energy report for amperage is generated.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="30" group="80" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32,64,128" default="0" size="1" />
+<Title> Alarm Settings</Title>
+<Description>
+Determines if alarms are enabled in this device, and how switch will react to which alarms. Value is determined by adding together the individual bit values for those alarms needed.
+Example: To enable Smoke Alarms, CO Alarms and Heat Alarms, enter a value of 11 (1-Smoke + 2-CO + 8-Heat = 11)
+Define Z-Wave network alarms to which the device will respond:
+1   = Smoke Alarm
+2   = CO Alarm
+4   = CO2 Alarm
+8   = Heat Alarm
+16  = Water Alarm
+32  = Access Control
+64  = Home Security (Intrusion)
+128 = Motion Sensor
+</Description>
+</Parameter>
+
+
+
+<Parameter name="31" group="80" access="rw" type="text">
+<Setting from="0" to="255" default="0" size="1" />
+<Title>Alarm Response</Title>
+<Description>
+Enabled by Parameter 30 (Alarm Settings); this setting determines what the switch does in case an alarms is triggered.
+0     = Disable alarm response
+1     = Switch is ON when alarm is triggered.
+2     = Switch is OFF when alarm is triggered.
+3-255 = Switch turns ON and OFF at rate determined by this setting. Each value = 1/10th of a second (3 = 0.3 second cycle, 255 = 25.5 second cycle)
+</Description>
+</Parameter>
+
+
+
+<Parameter name="32" group="80" access="rw" type="text">
+<Setting from="0" to="255" default="0" size="1" />
+<Title>Alarm Disablement</Title>
+<Description>
+Determines the method of disabling the alarm of the device.
+0      = Disables the alarm by single-tapping the device action button.
+1      = Disables the alarm by double-tapping the device action button within 1 second.
+2      = Disables the alarm by four-tapping the device action button within 2 seconds.
+4      = Disables the alarm by pressing and holding the device action button for about 4 seconds.
+5-255  = Disables the alarm automatically after a period of 5-255 seconds.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="40" group="30" access="rw" type="text">
+<Setting from="0" to="86400" default="0" size="4" />
+<Title>Automatic Off Timer</Title>
+<Description>
+Acts as timed automatic OFF as soon as the device is turned on, expressed in seconds.
+0       = Timed auto off disabled.
+1-86400 = Switch will automatically be turned off in this number of seconds after being turned on. 
+</Description>
+</Parameter>
+
+
+
+<Parameter name="41" group="30" access="rw" type="text">
+<Setting from="0" to="86400" default="0" size="4" />
+<Title>Automatic On Timer</Title>
+<Description>
+Acts as timed automatic ON as soon as the device is turned off, expressed in seconds.
+0       = Timed auto on disabled.
+1-86400 = Switch will automatically be turned on in this number of seconds after being turned off. 
+</Description>
+</Parameter>
+
+
+
+<Parameter name="42" group="40" access="rw" type="range">
+<Setting from="0" to="2" default="2" size="1" />
+<Title>Report Command Setting</Title>
+<Description>
+This parameter controls while report will be sent to the lifeline group when the output state changes. 
+0 = Send no report.
+1 = Send Basic Report.
+2 = Send Switch Binary Report.
+</Description>
+</Parameter>
+
+
+
+<Parameter name="255" group="240" access="rw" type="text">
+<Setting from="0" to="4294967295" default="0" size="4" />
+<Title>Factory Reset or Initialization</Title>
+<Description>
+USE CAUTION: Restores the device to factory settings and removes device from network. 
+0          = Initialize all configuration parameters to default values.
+4294967295 = Restores the device to factory settings and removes the device from the network (0x55555555)
+</Description>
+</Parameter>
+
+
+
+</Parameters>
+</Device>
+
+
+</xml>
