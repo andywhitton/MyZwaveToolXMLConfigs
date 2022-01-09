@@ -1,0 +1,172 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="POPP Plugin Socket" version="1.0" 
+  url="https://manualzz.com/doc/9530217/popp-123580-manual" Manufacturer="0x154" ProductType="0x1100" ProductID="0x2">
+
+<!--Prepared by Andy Whitton on 9/1/2022 based on information for device POP 123580
+
+Baby Dimming does not appear to function as double click does not seem to 
+operate on this device but the parameters exist
+
+I have also not tried to experiement with the physical power characteristics settings - the majority of these parameters are not
+on the PDF for the actual 123634 device PDF and its PDF alo has a parameter number error
+-->
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='100' default='closed'>Power Pulse Control</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>LED Behaviour</Title>
+<Description>Determines how the LED behaves vis-a-vis the output power being on or not.
+Available settings:
+0 – Disabled (Off all the time)
+1 – Show switch state (Default) On when output is on
+2 – Night mode (Inverted) Off when output is on
+3 – Operated by Indicator Command Class</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="time">
+<Setting from="0" to="65535" default="0" size="2" >in seconds</Setting>
+<Title>Auto off timer</Title>
+<Description>This parameter allows to set a duration the plug will stay on
+Available settings:
+0 – Disabled - The plug will stay on until switched off
+1-65535 – Number of seconds to stay on for</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="0" size="1" />
+<Title>RF OFF Command Behaviour</Title>
+<Description>Determines how the socket will respond to the RF Off command
+Available settings:
+0 – Switch off (Default)
+1 – Ignore
+2 – Switch on
+3 – Switch on if load is off else switch off</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>State After Power is Restored</Title>
+<Description>Determines the socket state after power has been restored
+Available settings:
+0 – Always off
+1 – Return to last state (Default)</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="30" size="1" />
+<Title>Auto Dimming Speed</Title>
+<Description>Sets the time it takes to get from Off to required start brightness, or to respond to s set command to allow for smooth start up.
+0 – Instant
+1-255 – Number of ticks at 10ms per tick (Default 30)</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="3" size="1" />
+<Title>Manual Dimming Speed</Title>
+<Description>Sets the time to dim the complete range on button hold in seconds i.e. At the default setting it will take 3 seconds to go from full on to off or full off to on
+1-255 – Seconds (Default 3)</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Behaviour on 'Switch On'</Title>
+<Description>Determines the Dim level with the ON command when off or already on
+Available settings:
+0 – Last dim level (default)
+1 – Maximum dim level when already on
+2 – Always maximum dim level</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="range">
+<Setting from="0" to="99" default="0" size="1" />
+<Title>Baby Dimming Time</Title>
+<Description>Time to dim on double click OFF button for Baby-Dim function.  This function works only if the load is operated by single press and hold button action.  If enabled, the device will wait for a click timeout to see if the second click would be pressed.  This will introduce a small delay for single click operations:
+0 – Disabled
+1-99 – Minutes (Default 0)</Description>
+</Parameter>
+
+<Parameter name="9" group="0" access="rw" type="range">
+<Setting from="0" to="99" default="0" size="1" />
+<Title>Target Baby Dimming Level</Title>
+<Description>The dimming level that the device will end at when the timer ends.
+0 – Off  (Default)
+1-99 – Percent</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="50" size="1" />
+<Title>Typical Click Timeout</Title>
+<Description>Sets the time to differentiate between click, hold, double and triple clicks
+1-100 – In 10ms units (Default 50 = 500ms or 0.5 seconds)</Description>
+</Parameter>
+
+<Parameter name="17" group="0" access="rw" type="range">
+<Setting from="1" to="95" default="1" size="1" />
+<Title>Minimum Brightness</Title>
+<Description>Sets the minimum absolute dim level the light can reach.  The Dim level reported by the device is in percentage between the Minimum Brightness and the Maximum Brightness.
+The Minimum Brightness must be less than the Maximum Brightness
+Available settings:
+1-95 – Dim level to start with at switch on</Description>
+</Parameter>
+
+<Parameter name="18" group="0" access="rw" type="range+">
+<Setting from="10" to="99" values="0" default="99" size="1" />
+<Title>Maximum Brightness</Title>
+<Description>Sets the maximum absolute dim level the light can reach.  The Dim level reported by the device is in percentage between the Minimum Brightness and the Maximum Brightness.
+The Maximum Brightness must be greater than the Minimum Brightness
+Available settings:
+0 – Work as a switch : Use off and maximal level
+10-99 – Dim level to start with at switch on</Description>
+</Parameter>
+
+<Parameter name="19" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="0" size="1" />
+<Title>Dim level at switch on</Title>
+<Description>Set the Dim level at switch on
+Available settings:
+0 – Disabled - On last level (Default)
+1-100 – Dim level to start with at switch on</Description>
+</Parameter>
+
+<Parameter name="51" group="100" access="rw" type="range+">
+<Setting from="5" to="60" values="1" default="28" size="1" />
+<Title>Pause Before Pulse</Title>
+<Description>*** Do not use these settings if you are not sure what they mean!  For dimmable LEDs and CLF with bypass use value 1.  For other bulbs use default
+1 - For bulbs with bypass
+5-60 – Time in ms of pause before pulse</Description>
+</Parameter>
+
+<Parameter name="52" group="100" access="rw" type="range">
+<Setting from="5" to="60" default="28" size="1" />
+<Title>Pause After Pulse</Title>
+<Description>*** Do not use these settings if you are not sure what they mean!  For dimmable LEDs and CLF with bypass use value 40.  For other bulbs use default
+5-60 – Time in ms of pause before pulse
+40 – Time for bulbs with bypass</Description>
+</Parameter>
+
+<Parameter name="53" group="100" access="rw" type="range">
+<Setting from="3" to="20" default="10" size="1" />
+<Title>Pulse Width</Title>
+<Description>*** Do not use these settings if you are not sure what they mean!  For dimmable LEDs and CLF with bypass use value 20.  For other bulbs use default
+3-20 – Time in ms of pause before pulse (Default 10)
+20 – Time for bulbs with bypass</Description>
+</Parameter>
+
+<Parameter name="54" group="100" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Pulse Type</Title>
+<Description>*** Do not use these settings if you are not sure what they mean!
+Available settings:
+0 – Long pulse (Default)
+1 – Short pulse</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

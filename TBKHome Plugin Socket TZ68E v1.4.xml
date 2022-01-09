@@ -1,0 +1,19 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="TBKHome Plugin TZ68E" version="1.4" 
+  url="http://www.tkbhome.com/upimg/file/1124383846813.pdf" Manufacturer="0x118" ProductType="0x101" ProductID="0x103">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>LED Behaviour</Title>
+<Description>Determines how the LED behaves vis-a-vis the output power being on or not.
+Available settings:
+0 – Blue indicates off (Default)
+1 – Blue indicates on</Description>
+</Parameter>
+
+
+</Parameters>
+</Device>
+</xml>
