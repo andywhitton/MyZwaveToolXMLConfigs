@@ -1,0 +1,102 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Aeotec Door / Window Sensor 6 (ZW112A)" version="1.1" url="https://aeotec.freshdesk.com/helpdesk/attachments/6102435088" Manufacturer='0x86' ProductType='0x102' ProductID='0x70'>
+  <Groups>
+    <Group ID='0' default='open'>Basic Functionalities</Group>
+	<Group ID='30' default='open'>Advanced Functionalities</Group>
+	<Group ID='40' default='open'>Reporting Functionalities</Group>
+	<Group ID='50' default='open'>Limits</Group>
+	<Group ID='80' default='open'>Alarms</Group>
+	<Group ID='100' default='open'>Reporting</Group>
+	<Group ID='200' default='open'>Calibration</Group>
+	<Group ID='240' default='open'>Reset</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="100" access="rw" type="radio">
+<Setting  values="0,1" default="1" size="1" />
+<Title>Sensor Binary Report Function</Title>
+<Description>
+This parameter is used to reverse how the sensor reports. Sensor Binary Report is affected by this setting. (1-Byte)
+
+0 = Sensor Binary Report is set to 0xFF when door is opened. Sensor Binary Report is set to 0x00 when door is closed.
+1 = Sensor Binary Report is set to 0x00 when door is opened. Sensor Binary Report is set to 0xFF when door is closed. This is the default mode of operation.  
+</Description>
+</Parameter>
+
+
+<Parameter name="39" group="0" access="rw" type="range">
+<Setting from="10" to="50" default="30" size="1" />
+<Title>Low Battery Threshold</Title>
+<Description>
+This parameter is used to configure the low battery threshold. A battery report will be issued when the battery level is less than or equal to the threshold setting. Unit is expressed in %. (1-Byte)
+</Description>
+</Parameter>
+
+
+<Parameter name="101" group="40" access="rw" type="radio">
+<Setting  values="0,1" default="1" size="1" />
+<Title>Low Battery Checking Enable/Disable</Title>
+<Description>
+This parameter is used to enable or disable low battery checking function. (1-Byte)
+
+0 = Disable low battery function checking.
+1 = Enable low battery function checking.  
+</Description>
+</Parameter>
+
+
+<Parameter name="111" group="40" access="rw" type="text">
+<Setting from="0" to="2147483647" default="86640" size="4" />
+<Title>Low Battery Checking Interval</Title>
+<Description>
+This parameter is used to configure the interval that the device checks for low battery. The default value is 86640 (0x00015270), which corresponds to approx. 24 days as expressed in unit seconds. The minimum value is 4 minutes (240, 0xF0) https://www.rapidtables.com/convert/number/hex-to-decimal.html (4-Byte)
+
+If parameter 101 is set to 0 (disable), this value is ignored. 
+
+</Description>
+</Parameter>
+
+
+<Parameter name="121" group="100" access="rw" type="radio">
+<Setting  values="1,2,3" default="1" size="1" />
+<Title>Sensor Report Selection</Title>
+<Description>
+This parameter is used to determine which report(s) are sent when the door is opened or closed. (1-Byte)
+
+1 = Basic Set CC is selected.
+2 = Sensor Binary Report CC is selected.
+3 = Both Basic Set CC and Sensor Binary Report CC are selected.
+</Description>
+</Parameter>
+
+
+<Parameter name="252" group="30" access="rw" type="radio">
+<Setting  values="0,1" default="0" size="1" />
+<Title>Configuration Parameter Lock/Unlock</Title>
+<Description>
+This parameter is used to lock or unlock changes to all other parameters for device. (1-Byte)
+
+0 = Unlock parameter changes.
+1 = Lock (prevent) changes to all other parameters.
+</Description>
+</Parameter>
+
+
+<Parameter name="255" group="240" access="rw" type="text">
+<Setting from="0" to="1431655765" default="0" size="4" />
+<Title>Factory Reset or Initialization</Title>
+<Description>
+USE CAUTION: Restores the device to factory settings and removes device from network. 
+
+0          = Initialize all configuration parameters to default values.
+1431655765 = Restores the device to factory settings and removes the device from the network (0x55555555)
+</Description>
+</Parameter>
+
+
+</Parameters>
+</Device>
+
+
+</xml>

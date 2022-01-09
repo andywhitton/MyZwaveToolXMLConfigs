@@ -1,0 +1,136 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Home Energy Meter Gen5 (ZW095-A)" version="1.35" url="https://products.z-wavealliance.org/products/1289/configs" Manufacturer="0x86" ProductType="0x102" ProductID="0x5F">
+    <Groups>
+        <Group ID="1">Parameters</Group>
+    </Groups>
+    <Parameters>
+        <Parameter name="2" group="1" access="rw" type="radio">
+            <Setting  values="0,1,2,3" default="0" size="1" />
+            <Title>Energy detection mode configuration.</Title>
+            <Description>Sets the reports for solar power.
+            0 - Report Wattage and the absolute KWH value. (default) (Homeseer)
+            1 - Report positive/negative Wattage and the algebraic sum KWH value.
+            2 - Report positive/negative Wattage and the positive KWH value (consuming electricity).
+	    3 - Report positive/negative Wattage and the negative KWH value (generating electricity).</Description>
+          </Parameter>
+          <Parameter name="3" group="1" access="rw" type="radio">
+            <Setting  values="0,1" default="1" size="1" />
+            <Title>Enable/Disable the function of parameter 4 and 11.</Title>
+            <Description>When to report switch status changes to controller and associated devices.
+            0 - Disable the function of parameter 4 and 11. (Homeseer)
+            1 - Enable the function of parameter 4 and 11. (default)</Description>
+        </Parameter>
+        <Parameter name="4" group="1" access="rw" type="text">
+            <Setting from="0" to="32767" default="32767" size="2" />
+            <Title>Induce a automatic report of whole HEM.</Title>
+            <Description>The threshold can be set from 0 to 32767 watt.
+            Values: 0 to 32767.</Description>
+        </Parameter>
+        <Parameter name="5" group="1" access="rw" type="text">
+            <Setting from="0" to="32767" default="32767" size="2" />
+            <Title>Induce a automatic report of Channel 1.</Title>
+            <Description>The threshold can be set from 0 to 32767 watt.
+            Values: 0 to 32767.</Description>
+        </Parameter>
+        <Parameter name="6" group="1" access="rw" type="text">
+            <Setting from="0" to="32767" default="32767" size="2" />
+            <Title>Induce a automatic report of Channel 2.</Title>
+            <Description>The threshold can be set from 0 to 32767 watt.
+            Values: 0 to 32767.</Description>
+        </Parameter>
+        <Parameter name="8" group="1" access="rw" type="text">
+            <Setting from="0" to="100" default="100" size="1" />
+            <Title>Induce a automatic report of whole HEM.</Title>
+            <Description>The threshold can be set from 0 to 100 percent.
+            Values: 0 to 100.</Description>
+        </Parameter>
+        <Parameter name="9" group="1" access="rw" type="text">
+            <Setting from="0" to="100" default="100" size="1" />
+            <Title>Induce a automatic report of Channel 1.</Title>
+            <Description>The threshold can be set from 0 to 100 percent.
+            Values: 0 to 100.</Description>
+        </Parameter>
+        <Parameter name="10" group="1" access="rw" type="text">
+            <Setting from="0" to="100" default="100" size="1" />
+            <Title>Induce a automatic report of Channel 2.</Title>
+            <Description>The threshold can be set from 0 to 100 percent.
+            Values: 0 to 100.</Description>
+        </Parameter>
+        <Parameter name="13" group="1" access="rw" type="radio">
+            <Setting  values="0,1" default="0" size="1" />
+            <Title>Enable /disable CRC-16 Encapsulation.</Title>
+            <Description>0 - Disable CRC-16 Encapsulation. (default)
+            1 - Enable CRC-16 Encapsulation. (Homeseer)</Description>
+        </Parameter>    
+        <Parameter name="101" group="1" access="rw" type="radio">
+            <Setting  values="1,2,4,8,256,768,2048,4096,65536,196608,524288,1048576,1776384" default="2" size="4" />
+            <Title>To set which report need to be sent.</Title>
+            <Description>1 - Report Accumulated kWh of whole HEM.
+	    2 - Report Instantaneous Watts of whole HEM. (default)
+	    4 - Report Instantaneous Voltage of whole HEM.
+	    8 - Report Instantaneous Current (Amperes) of whole HEM.
+	    256 - Report Instantaneous Watts of Channel 1.
+	    768 - Report Instantaneous Watts of Channel 2.
+	    2048 - Report Accumulated kWh of Channel 1.
+            4096 - Report Accumulated kWh of Channel 2.
+            65536 - Report Instantaneous Voltage of Channel 1.
+            196608 - Report Instantaneous Voltage of Channel 2.
+            524288 - Report Instantaneous Current (Amperes) of Channel 1.
+            1048576 - Report Instantaneous Current (Amperes) of Channel 2.
+            1776384 - Report all reports on Channel 1 + 2 (Homeseer)</Description>
+        </Parameter>
+        <Parameter name="102" group="1" access="rw" type="radio">
+            <Setting  values="1,2,4,8,256,768,2048,4096,65536,196608,524288,1048576,1776384" default="1" size="4" />
+            <Title>To set which report need to be sent.</Title>
+            <Description>1 - Report Accumulated kWh of whole HEM. (default)
+	    2 - Report Instantaneous Watts of whole HEM.
+	    4 - Report Instantaneous Voltage of whole HEM.
+	    8 - Report Instantaneous Current (Amperes) of whole HEM.
+	    256 - Report Instantaneous Watts of Channel 1.
+	    768 - Report Instantaneous Watts of Channel 2.
+	    2048 - Report Accumulated kWh of Channel 1.
+            4096 - Report Accumulated kWh of Channel 2.
+            65536 - Report Instantaneous Voltage of Channel 1.
+            196608 - Report Instantaneous Voltage of Channel 2.
+            524288 - Report Instantaneous Current (Amperes) of Channel 1.
+            1048576 - Report Instantaneous Current (Amperes) of Channel 2.
+            1776384 - Report all reports on Channel 1 and 2 (Homeseer)</Description>
+        </Parameter>
+        <Parameter name="103" group="1" access="rw" type="radio">
+            <Setting  values="1,2,4,8,256,768,2048,4096,65536,196608,524288,1048576,1776384" size="4" />
+            <Title>To set which report need to be sent.</Title>
+            <Description>1 - Report Accumulated kWh of whole HEM. (default)
+	    2 - Report Instantaneous Watts of whole HEM.
+	    4 - Report Instantaneous Voltage of whole HEM.
+	    8 - Report Instantaneous Current (Amperes) of whole HEM.
+	    256 - Report Instantaneous Watts of Channel 1.
+	    768 - Report Instantaneous Watts of Channel 2.
+	    2048 - Report Accumulated kWh of Channel 1.
+            4096 - Report Accumulated kWh of Channel 2.
+            65536 - Report Instantaneous Voltage of Channel 1.
+            196608 - Report Instantaneous Voltage of Channel 2.
+            524288 - Report Instantaneous Current (Amperes) of Channel 1.
+            1048576 - Report Instantaneous Current (Amperes) of Channel 2.
+            1776384 - Report all reports on Channel 1 and 2 (Homeseer)</Description>
+        </Parameter>
+        <Parameter name="111" group="1" access="rw" type="text">
+            <Setting from="0" to="268435456" default="268435456" size="4" />
+            <Title>Set the interval time of sending report.</Title>
+            <Description>Interval Seconds.
+            Values: 0 to 268435456.</Description>
+        </Parameter>
+        <Parameter name="112" group="1" access="rw" type="text">
+            <Setting from="0" to="268435456" default="268435456" size="4" />
+            <Title>Set the interval time of sending report.</Title>
+            <Description>Interval Seconds.
+            Values: 0 to 268435456.</Description>
+        </Parameter>
+        <Parameter name="113" group="1" access="rw" type="text">
+            <Setting from="0" to="268435456" default="268435456" size="4" />
+            <Title>Set the interval time of sending report.</Title>
+            <Description>Interval Seconds.
+            Values: 0 to 268435456.</Description>
+        </Parameter>
+    </Parameters>
+</Device>
+</xml>

@@ -1,0 +1,121 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Aeotec Recessed Door Sensor 7" version="1.4" url="https://aeotec.freshdesk.com/helpdesk/attachments/6092013991" Manufacturer='0x371' ProductType='0x102' ProductID='0xBB'>
+  <Groups>
+    <Group ID='0' default='open'>Basic Functionalities</Group>
+	<Group ID='30' default='open'>Advanced Functionalities</Group>
+	<Group ID='40' default='open'>Reporting Functionalities</Group>
+	<Group ID='50' default='open'>Limits</Group>
+	<Group ID='80' default='open'>Alarms</Group>
+	<Group ID='100' default='open'>Reporting</Group>
+	<Group ID='200' default='open'>Calibration</Group>
+	<Group ID='240' default='open'>Reset</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="100" access="rw" type="radio">
+<Setting  values="0,1" default="1" size="1" />
+<Title>Binary Sensor Report</Title>
+<Description>
+This parameter is used to enable/disable the binary sensor report. This allows for backward compatibility to report Binary if Notification Report cannot be used for status changes. (1-Byte)
+
+0 = Disable. Sensor Binary Report will NOT be issued via Lifeline when magnet is away or near.
+1 = Enable. Sensor Binary Report will be issued via Lifeline when magnet is away or near. 
+</Description>
+</Parameter>
+
+
+<Parameter name="2" group="100" access="rw" type="radio">
+<Setting  values="0,1" default="0" size="1" />
+<Title>Reverse Sensor Reports</Title>
+<Description>
+This parameter is used to reverse how the sensor reports. Both the Sensor Binary Report and Notification Report are affected by this setting. (1-Byte)
+
+0 = Open Status when magnet is Away. Close status when magnet is near. This is the default mode of operation.
+1 = Closed Status when magnet is Away. Open Status when magnet is near.  
+</Description>
+</Parameter>
+
+
+<Parameter name="3" group="100" access="rw" type="radio">
+<Setting  values="0,1,2,3,4,5,6" default="1" size="1" />
+<Title>Association Group 2 Settings</Title>
+<Description>
+This parameter is used to configure the Basic Set value. Determines the Basic Set value to control other Z-Wave devices directly when magnet is away or close. (1-Byte)
+
+0 = Disable completely.
+1 = Send Basic Set 0xFF when magnet is away, and send Basic Set 0x00 when magnet is close.
+2 = Send Basic Set 0x00 when magnet is away, and send Basic Set 0xFF when magnet is close.
+3 = Only send Basic Set 0xFF when magnet is away.
+4 = Only send Basic Set 0x00 when magnet is close.
+5 = Only send Basic Set 0x00 when magnet is away.
+6 = Only send Basic Set 0xFF when magnet is close.
+</Description>
+</Parameter>
+
+
+<Parameter name="4" group="30" access="rw" type="text">
+<Setting from="1" to="1535" default="0" size="2" />
+<Title>Application Layer Retry</Title>
+<Description>
+This parameter is used to configure number of retries and wait time between retries. This device supports a retry mechanism when the application of the device detects a transmission error
+when the Basic Set, Sensor Binary Report or Notification Report (Access Control) message is sent out but fails to receive an ACK or a Supervision Report. (2-Byte)
+
+This value is expressed as the hexadecimal value of an unsigned integer. For example, a value of 0x05FF would indicate (0x05..) 5 retries with a wait time of (0x..FF) 25500ms between retries.
+This would equate to an integer value of 1535. https://www.rapidtables.com/convert/number/hex-to-decimal.html
+
+Value 1 (0xXX..) = Configure the number of retries in a range of 0-5. A value of 0 disables retries.
+Value 2 (0x..XX) = Configure the wait time between retries in a range of 0-255. Unit value is 100ms. 
+</Description>
+</Parameter>
+
+
+<Parameter name="5" group="30" access="rw" type="range">
+<Setting from="0" to="50" default="15" size="1" />
+<Title>Supervision Report Wait Time</Title>
+<Description>
+This parameter is used to configure the time the device waits to receive a Supervision Report. Note that issuing Basic Set, Sensor Binary Report or Notification Report (Access Control) via
+association groups uses Supervision Encapsulation only if sending commands with S2 or higher security encapsulation. This parameter can be configured in any network, but only functions with
+S2 or higher security. (1-Byte)
+</Description>
+</Parameter>
+
+
+<Parameter name="81" group="0" access="rw" type="radio">
+<Setting  values="0,1,2,3" default="3" size="1" />
+<Title>LED Indicator</Title>
+<Description>
+This parameter is used to configure the operation of the LED indicator on the device. (1-Byte)
+
+0 = Completely disable LED.
+1 = LED quickly flashes only when sending Basic Set, Sensor Binary Report or Notification Report (Access Control).
+2 = LED activates only when sending Wake Up Notification.
+3 = LED quickly flashes when sending any notification type.
+</Description>
+</Parameter>
+
+
+<Parameter name="90" group="0" access="rw" type="text">
+<Setting from="10" to="50" default="30" size="1" />
+<Title>Low Battery Threshold</Title>
+<Description>
+This parameter is used to configure the low battery threshold. A battery report will be issued when the battery level is less than or equal to the threshold setting. Unit is expressed in
+%. (1-Byte)
+</Description>
+</Parameter>
+
+
+<Parameter name="101" group="100" access="rw" type="text">
+<Setting from="1" to="14400" default="70" size="2" />
+<Title>Timed Battery Report</Title>
+<Description>
+This parameter is used to set how often the battery level is reported (in minutes). (2-Byte)
+</Description>
+</Parameter>
+
+
+</Parameters>
+</Device>
+
+
+</xml>

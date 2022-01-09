@@ -1,0 +1,50 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Jasco GE Z-Wave Direct-Wire Outdoor Indoor Smart Switch 40 Amp 14285" version="5.55" url="https://products.z-wavealliance.org/products/2939/configs" Manufacturer='0x63' ProductType='0x4F44' ProductID='0x3032'>
+  <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Product State after Power Reset</Title>
+<Description>
+0 (Default) Return to last state
+1           Return to off
+2           Return to on
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Energy Report Mode</Title>
+<Description>
+0 (Default)  Once monthly
+1            Device reports based on Parameter 3 setting (Every 5-60 minutes)
+2            Once daily
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="5" to="60"  default="5" size="1" />
+<Title>Energy Report Frequency</Title>
+<Description>
+5 minutes (default) - 60 minutes (max)
+</Description>
+</Parameter>
+
+<Parameter name="19" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Alternate Exclusion</Title>
+<Description>
+0  (Default) Default
+1            Alternate Exclusion (3 button presses)
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+
+
+</xml>
