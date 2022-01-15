@@ -1,0 +1,48 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="TBKHome Energy Meter Plugin TZ88E" version="1.0" 
+  url="http://www.tkbhome.com/TZ88-Smart-energy-plug-in-switch_012_263.html" Manufacturer="0x118" ProductType="0x1" ProductID="0x1">
+
+<!--Preparer by Andy Whitton 10/1/2022 Based on TZ88 PDF referenced augmented by TZ69 information on TBKHome website.  Parameter 5 meaning has not been determined-->
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="text">
+<Setting from="0" to="32767" default="720" size="2" >5 seconds</Setting>
+<Title>Watt Meter Report Period</Title>
+<Description>Determines how frequently to report Watts being consumed.
+It is measure in 5 second units thus 720 = 720x5 = 3600 seconds = 1 hour</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="text">
+<Setting from="0" to="32767" default="6" size="2" >10 minutes</Setting>
+<Title>kWh Meter Report Period</Title>
+<Description>Determines how frequently to report kWhs consumed.
+It is measure in 10 minute units thus 6 = 6x10 = 60 minutes = 1 hour</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="text">
+<Setting from="10" to="3000" default="3000" size="2" >Watts</Setting>
+<Title>Watt Load Caution Threshold</Title>
+<Description>Determines the threshold in Watts at which an overload warning is issued.</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="text">
+<Setting from="1" to="10000" default="10000" size="2" >kWhs</Setting>
+<Title>kWh Consumption Caution Threshold</Title>
+<Description>Determines the threshold in kWh at which an consumption warning is issued.</Description>
+</Parameter>
+
+<!-- It is unknown what this parameter does
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>LED Behaviour</Title>
+<Description>Determines how the LED behaves vis-a-vis the output power being on or not.
+Available settings:
+0 – LED indicates on 
+1 – LED indicates off (Default)</Description>
+</Parameter>
+-->
+
+</Parameters>
+</Device>
+</xml>

@@ -1,0 +1,133 @@
+<xml version="1.0" encoding="UTF-8">
+<Device name="Aeon Micro Smart Energy Illuminator G2" version="1.15" url="https://help.aeotec.com/support/solutions/articles/6000053613-micro-dimmer-g2-and-micro-smart-dimmer-g2-user-guide-" Manufacturer='0x86' ProductType='0x3' ProductID='0x13'>
+
+<!-- Prepared by Andy Whitton 12/1/2022 Based on multiple documents that in some case contradict on parameters present and
+also on the config of the reporting parameters
+-->
+
+<Groups>
+    <Group ID='0' default='open'>Basic Functionalities</Group>
+	<Group ID='40' default='open'>Reporting Functionalities</Group>
+</Groups>
+
+<Parameters>
+<!--
+Documentation suggests Parameter 1 and 2 ought to exist but they dont on my devices
+-->
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Current Overload Protection</Title>
+<Description>Determines if the device protects from current overload
+0 Disabled
+1 Enabled</Description>
+</Parameter>
+
+<Parameter name="80" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Automatic Notification</Title>
+<Description>Sets the nature of automatic notifications on state change
+0 No notification
+1 Hail
+2 Basic CC Report</Description>
+</Parameter>
+
+<Parameter name="90" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Enable/Disable Parameters 91 and 92</Title>
+<Description>Determines is energy reporting on thresholds is enabled or not
+0 Disabled
+1 Enabled</Description>
+</Parameter>
+
+<!-- Technically this can go to 3500 Watts but for UI ease have limited to 200W -->
+<Parameter name="91" group="0" access="rw" type="range">
+<Setting from="1" to="200" default="50" size="2" />
+<Title>Trigger Threshold of Watts Change Report</Title>
+<Description>A threshold by which a report will be sent if the watts change exceeds this value</Description>
+</Parameter>
+
+<Parameter name="92" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="10" size="1" />
+<Title>Trigger Threshold of Watts Percentage Change Report</Title>
+<Description>A threshold by which a report will be sent if the watts percentage change exceeds this value</Description>
+</Parameter>
+
+
+<!-- HomeSeer config believes 1=Volts and 2=Amps but documentation says 1 is reserved and 2 is the multi-level sensor
+However I am wondering if this is FW version specific as this is absolutely not the case in my devices where 4 and 8 seem to 
+be the ONLY bits the device allows to be set -->
+<Parameter name="101" group="40" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="4" size="4" />
+<Title>Group 1 Report Elements</Title>
+<Description>Sets the things reported to Group 1
+1 Volts
+2 Amps
+4 Watts
+8 kWh</Description>
+</Parameter>
+
+<Parameter name="102" group="40" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="4" />
+<Title>Group 2 Report Elements</Title>
+<Description>Sets the things reported to Group 2
+1 Volts
+2 Amps
+4 Watts
+8 kWh</Description>
+</Parameter>
+
+<Parameter name="103" group="40" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="4" />
+<Title>Group 3 Report Elements</Title>
+<Description>Sets the things reported to Group 3
+1 Volts
+2 Amps
+4 Watts
+8 kWh</Description>
+</Parameter>
+
+<Parameter name="111" group="40" access="rw" type="time">
+<Setting from="1" to="86400" default="600" size="4" >seconds</Setting>
+<Title>Reporting to Group 1 Interval</Title>
+<Description>Set the time interval between Group 1 reports in seconds.</Description>
+</Parameter>
+
+<Parameter name="112" group="40" access="rw" type="time">
+<Setting from="1" to="86400" default="600" size="4" >seconds</Setting>
+<Title>Reporting to Group 2 Interval</Title>
+<Description>Set the time interval between Group 1 reports in seconds.</Description>
+</Parameter>
+
+<Parameter name="113" group="40" access="rw" type="time">
+<Setting from="1" to="86400" default="600" size="4" >seconds</Setting>
+<Title>Reporting to Group 3 Interval</Title>
+<Description>Set the time interval between Group 1 reports in seconds.</Description>
+</Parameter>
+
+<!-- This is undocumented for this particular device but it is the parameter on other similar devices and seems to work-->
+<Parameter name="120" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" >seconds</Setting>
+<Title>External Switch Type</Title>
+<Description>0 - Momentary
+1 - Toggle (Bi-stable)</Description>
+</Parameter>
+
+
+<!-- This parameter, if it exists, is a write only parameter if it exist
+MyZWaveParameters seems to attempt to read it which results in a long wait for timeout and then as error
+
+<Parameter name="255" group="0" access="w" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Reset to the default configuration</Title>
+<Description>Resest the device to its default configuration
+1 - Perform reset</Description>
+</Parameter>
+
+-->
+
+</Parameters>
+</Device>
+
+
+</xml>

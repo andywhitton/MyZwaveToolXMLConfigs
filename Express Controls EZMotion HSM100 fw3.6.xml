@@ -1,0 +1,82 @@
+<xml version="1.0" encoding="UTF-8"> 
+<Device name="Express Controls EZMotion HSM100 PIR" url="http://www.expresscontrols.com/pdf/EZMotionVeraUserGuide.pdf" Manufacturer='0xC' ProductType='0x2' ProductID='0x2' version="3.6">
+  <Groups>
+    <Group ID='0' default='open'>Motion sensor behavior - Basic functionalities</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="200" size="1" />
+<Title>Sensitivity</Title>
+<Description>The sensitivity to motion.
+Recommendations:
+10 = Pet imune
+100 = Medium sensitivity for hall ways
+200 = Highly sensitive for rooms where people are quite still</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="range">
+<Setting from="0" to="127" default="20" size="1" >minutes</Setting>
+<Title>On-Time</Title>
+<Description>Sets the time the light is on for in minutes.
+0 means the lights are always turned on with movement and will NOT be turned off.
+Lower values shorten battery life</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,255" default="255" size="1" />
+<Title>LED Mode</Title>
+<Description>Determines is the LED indiciates movement or not
+0 - Off
+255 - On</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="100" size="1" />
+<Title>Light Threshold</Title>
+<Description>Determines how dark the environment must be before the sensor switches on the light with movement
+0-100   Light Threshold below which the light is switched on with movement. 0 = Pitch Black to 100 Completely Bright
+100 disables this feature so all motion will turn on the lights</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,255" default="0" size="1" />
+<Title>Stay Awake</Title>
+<Description>Sets whether the device stays on all the time to listen.  Staying on consumes a lot of battery and is designed ot only be used if the device is connected to a power source.
+0 - Off
+255 - On</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="range+">
+<Setting from="0" to="99" values="255" default="255" size="1" >in Seconds</Setting>
+<Title>On Value</Title>
+<Description>Defines the value that is sent to the ligth note to switch it on.
+0 - This is normally Off
+1-99 - This is normally a dim level
+255 - This is normally On</Description>
+
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="range">
+<Setting from="-127" to="128" default="0" size="1" />
+<Title>Temperature Adjustment</Title>
+<Description>This parameter defines the adjustment made to the temperator sensor value to reflect variation in the sensor accuracy / placement in the room.
+The value can be positive or negative and is measure in Fahrenheit</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="binarycheck">
+<Setting values ="1,2,4" default="0" size="1" />
+<Title>Reporting Configuration</Title>
+<Description>Enables/disables each reported item.  Setting the bit DISABLES the report
+Available settings:
+1 – Temperature
+2 – Luminance
+4 – Battery Level</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+
+
+</xml>
