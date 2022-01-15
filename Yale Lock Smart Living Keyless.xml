@@ -1,0 +1,85 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Yale Lock TBD" version="12.32" url="https://help.yale.co.uk/wp-content/uploads/2020/01/Z-wave-module-manual.pdf" Manufacturer='0x129' ProductType='0x7' ProductID='0x0'>
+
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="1,2,3" default="3" size="1" />
+<Title>Set Volumn Level</Title>
+<Description>Sets the beep volume
+1 - Silent mode
+2 - Low
+3 - High (Default)</Description>
+</Parameter>
+
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting  values="0,255" default="255" size="1" />
+<Title>Auto Relock On/Off</Title>
+<Description>0 - OFF
+255 - ON (default) </Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="range">
+<Setting from="7" to="60" default="7" size="1" >seconds</Setting>
+<Title>Relock Time</Title>
+<Description>Sets the period of time the door is unlocked when opened with the keypad
+7-60 seconds (default is 7 seconds)</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="range+">
+<Setting from="3" to="10" values="0,255" default="7" size="1" >times </Setting> 
+<Title>Wrong Code Entry Limit</Title>
+<Description>3-10 (default is 7 times)</Description>
+</Parameter>
+
+<!-- Does not exist on this lock
+<Parameter name="5" group="0" access="rw" type="range">
+<Setting from="1" to="3" default="1" size="1" />
+<Title>Language</Title>
+<Description> 1=English, 2=Spanish, 3=French default is 1= English.</Description>
+</Parameter>
+-->
+
+<Parameter name="6" group="0" access="rw" type="range">
+<Setting from="10" to="90" default="10" size="1" >seconds</Setting>
+<Title>Remote Relock Time</Title>
+<Description>Sets the period the door is unlocked when done remotely.
+10-90 seconds (default is 10 seconds)</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="range+">
+<Setting from="10" to="180" values="0,255" default="10" size="1" >seconds</Setting>
+<Title>Shut Down Time (after wrong code entries) </Title>
+<Description>10 to 180 seconds default is 10 seconds</Description>
+</Parameter>
+
+<!--  Parameters do not 
+<Parameter name="8" group="0" access="rw" type="radio">
+<Setting  values="00,01,02" default="00" size="1" />
+<Title>Operating Mode</Title>
+<Description>00 - normal mode (this is the default mode)
+01 - vacation mode, keypad lockout
+02 - privacy mode, no keypad. RF Unlock will work</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="radio">
+<Setting  values="0x00,0xFF" default="0xFF" size="1" />
+<Title>One Touch Locking</Title>
+<Description>0x00 (0) = OFF
+0xFF (255) = ON </Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="radio">
+<Setting  values="0x00,0xFF" default="0x00" size="1" />
+<Title>Privacy Button</Title>
+<Description>0x00 (0) = OFF
+0xFF (255) = ON </Description>
+</Parameter>
+-->
+
+<!-- end xml-->
+  </Parameters>
+</Device>
+</xml>
