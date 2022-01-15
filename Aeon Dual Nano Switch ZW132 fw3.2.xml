@@ -36,9 +36,9 @@
 </Parameter>
 
 <Parameter name="21" group="1" access="rw" type="hexcheck">
-<Setting subtype1="range+" subtype2 = "binarycheck" size="4" /> 
-<Value1 from="256" to="257" values="0,1" default="257" size="2"/><!--MSW-->
-<Value2 values="0,1,256" default="257" size="2"/><!--LSW-->
+<Setting subtype1="binarycheck" subtype2 = "binarycheck" size="4" /> 
+<Value1 values="1,256" default="257" size="2"/><!--MSW-->
+<Value2 values="1,256" default="257" size="2"/><!--LSW-->
 <Title>Enable/Disable the IR sensor of WallSwipe</Title>
 <Description>Combine the values to select the required combination
 LSB
