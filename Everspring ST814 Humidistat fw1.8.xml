@@ -1,5 +1,5 @@
 <xml version='1.0' encoding="UTF-8">
-<Device name="Everspring Humidistat ST814" version="1.8" url="https://www.everspring.com/portfolio-item/st814-temperature-humidity-detector/" Manufacturer="0x60" ProductType="0x6" ProductID="0x1">
+<Device name="Everspring Humidistat ST814 FW1.8" version="1.8" url="https://www.everspring.com/portfolio-item/st814-temperature-humidity-detector/" Manufacturer="0x60" ProductType="0x6" ProductID="0x1">
 
 <Groups>
     <Group ID='0' default='open'>Basic functionalities</Group>
@@ -11,7 +11,7 @@
 <Parameter name="1" group="0" access="rw" type="range">
 <Setting from="0" to="99" default="99" size="1" />
 <Title>Basic Set Level</Title>
-<Description>This parameter determines the level of humidity at which the basic set value will be ON.
+<Description>This parameter determines the value sent to association group 2 when the humidity reaches the ON point.
 0 = Disabled</Description>
 </Parameter>
 

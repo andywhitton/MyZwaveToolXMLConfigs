@@ -11,7 +11,7 @@
 <Parameter name="1" group="0" access="rw" type="range">
 <Setting from="0" to="99" default="99" size="1" />
 <Title>Basic Set Level</Title>
-<Description>This parameter determines the level of humidity at which the basic set value will be ON.
+<Description>This parameter determines the value sent to association group 2 when the humidity reaches the ON point.
 0 = Disabled</Description>
 </Parameter>
 
