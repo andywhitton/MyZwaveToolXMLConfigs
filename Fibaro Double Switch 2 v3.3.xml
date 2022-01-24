@@ -1,0 +1,419 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro Double Switch 2 v3.3" version="3.3" 
+  url="https://manuals.fibaro.com/switch-2/" Manufacturer="0x10F" ProductType="0x203" ProductID="0x1000">
+
+<Parameters>
+
+<Parameter name="9" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Restore state after power failure</Title>
+<Description>This parameter determines if the device will return to state prior to the power failure after power is restored.
+Available settings:
+0 – the device does not save the state prior to the power failure and returns to "off" position
+1 – the device restores its state prior to the power failure
+</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="0" size="1" />
+<Title>First channel - operating mode</Title>
+<Description>This parameter allows to choose operating for the 1st channel controlled by the S1 switch.
+Available settings:
+0 – standard operation
+1 – delay ON
+2 – delay OFF
+3 – auto ON
+4 – auto OFF
+5 – flashing mode
+</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>First channel - reaction to switch for delay/auto ON/OFF modes</Title>
+<Description>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.
+Available settings:
+0 – cancel mode and set target state
+1 – no reaction to switch – mode runs until it ends
+2 – reset timer – start counting from the beginning
+</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="time">
+<Setting from="0" to="32000" default="50" size="2" />
+<Title>First channel - time parameter for delay/auto ON/OFF modes</Title>
+<Description>This parameter allows to set time parameter used in timed modes.
+Available settings:
+0 (0.1s)
+1-32000 (1-32000s, 1s step) – time parameter
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="text">
+<Setting from="1" to="32000" default="5" size="2" />
+<Title>First channel - pulse time for flashing mode</Title>
+<Description>This parameter allows to set time of switching to opposite state in flashing mode.
+Available settings:
+1-32000 (0.1-3200.0s, 0.1s step) – time parameter
+</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5" default="0" size="1" />
+<Title>Second channel - operating mode (only Double Switch 2 - FGS-223)</Title>
+<Description>This parameter allows to choose operating for the 1st channel controlled by the S2 switch.
+Available settings:
+0 – standard operation
+1 – delay ON
+2 – delay OFF
+3 – auto ON
+4 – auto OFF
+5 – flashing mode
+</Description>
+</Parameter>
+
+<Parameter name="16" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Second channel - reaction to switch for delay/auto ON/OFF modes</Title>
+<Description>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S2 terminal.
+Available settings:
+0 – cancel mode and set target state
+1 – no reaction to switch – mode runs until it ends
+2 – reset timer – start counting from the beginning
+</Description>
+</Parameter>
+
+<Parameter name="17" group="0" access="rw" type="time">
+<Setting from="0" to="32000" default="50" size="2" />
+<Title>Second channel - time parameter for delay/auto ON/OFF modes</Title>
+<Description>This parameter allows to set time parameter used in timed modes.
+Available settings:
+0 (0.1s)
+1-32000 (1-32000s, 1s step) – time parameter
+</Description>
+</Parameter>
+
+<Parameter name="18" group="0" access="rw" type="text">
+<Setting from="1" to="32000" default="5" size="2" />
+<Title>Second channel - pulse time for flashing mode</Title>
+<Description>This parameter allows to set time of switching to opposite state in flashing mode.
+Available settings:
+1-32000 (0.1-3200.0s, 0.1s step) – time parameter
+</Description>
+</Parameter>
+
+<Parameter name="20" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="2" size="1" />
+<Title>Switch type</Title>
+<Description>This parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals.
+Available settings:
+0 – momentary switch
+1 – toggle switch (contact closed – ON, contact opened – OFF)
+2 – toggle switch (device changes status when switch changes status)
+</Description>
+</Parameter>
+
+<Parameter name="21" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Flashing mode - reports</Title>
+<Description>This parameter allows to define if the device sends reports during the flashing mode.
+Available settings:
+0 – the device does not send reports
+1 – the device sends reports
+</Description>
+</Parameter>
+
+<Parameter name="27" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="15" size="1" />
+<Title>Associations in Z-Wave network security mode</Title>
+<Description>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st "Lifeline" group.
+Available settings:
+1 – 2nd group sent as secure
+2 – 3rd group sent as secure
+4 – 4th group sent as secure
+8 – 5th group sent as secure
+Parameter 27 values may be combined, e.g. 1+2=3 means that 2nd and 3rd groups are sent as secure.
+</Description>
+</Parameter>
+
+<Parameter name="28" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="1" />
+<Title>S1 switch - scenes sent</Title>
+<Description>This parameter determines which actions result in sending scene IDs assigned to them.
+Available settings:
+1 – Key pressed 1 time
+2 – Key pressed 2 times
+4 – Key pressed 3 times
+8 – Key Hold Down and Key Released
+Parameter 28 values may be combined, e.g. 1+2=3 means that scenes for single and double click are sent.
+</Description>
+</Parameter>
+
+<Parameter name="29" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="1" />
+<Title>S2 switch - scenes sent</Title>
+<Description>This parameter determines which actions result in sending scene IDs assigned to them.
+Available settings:
+1 – Key pressed 1 time
+2 – Key pressed 2 times
+4 – Key pressed 3 times
+8 – Key Hold Down and Key Released
+Parameter 29 values may be combined, e.g. 1+2=3 means that scenes for single and double click are sent.
+</Description>
+</Parameter>
+
+<Parameter name="30" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="1" />
+<Title>S1 switch - associations sent to 2nd and 3rd association groups</Title>
+<Description>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.
+Available settings:
+1 – ignore turning ON with 1 click of the switch
+2 – ignore turning OFF with 1 click of the switch
+4 – ignore holding and releasing the switch*
+8 – ignore double click of the switch**
+
+Parameter 30 values may be combined, e.g. 1+2=3 means that associations for turning ON and OFF are not sent.
+
+*Hold and release is inactive when parameter 20 is set to 1 or 2.
+**Double click is inactive when parameter 20 is set to 1.
+</Description>
+</Parameter>
+
+<Parameter name="31" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="255" size="2" />
+<Title>S1 switch - Switch ON value sent to 2nd and 3rd association groups</Title>
+<Description>This parameter defines value sent with Switch ON command to devices associated in 2nd and 3rd association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="32" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="0" size="2" />
+<Title>S1 switch - Switch OFF value sent to 2nd and 3rd association groups</Title>
+<Description>This parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="33" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="99" size="2" />
+<Title>S1 switch - Double Click value sent to 2nd and 3rd association groups</Title>
+<Description>This parameter defines value sent with Double Click command to devices associated in 2nd and 3rd association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="35" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8" default="0" size="1" />
+<Title>S2 switch - associations sent to 4th and 5th association groups</Title>
+<Description>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.
+Available settings:
+1 – ignore turning on with 1 click of the switch
+2 – ignore turning off with 1 click of the switch
+4 – ignore holding and releasing the switch*
+8 – ignore double click of the switch**
+
+Parameter 35 values may be combined, e.g. 1+2=3 means that associations for turning ON and OFF are not sent.
+
+*Hold and release is inactive when parameter 20 is set to 1 or 2.
+**Double click is inactive when parameter 20 is set to 1.
+</Description>
+</Parameter>
+
+<Parameter name="36" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="255" size="2" />
+<Title>S2 switch - Switch ON value sent to 4th and 5th association groups</Title>
+<Description>This parameter defines value sent with Switch ON command to devices associated in 4th and 5th association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="37" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="0" size="2" />
+<Title>S2 switch - Switch OFF value sent to 4th and 5th association groups</Title>
+<Description>This parameter defines value sent with Switch OFF command to devices associated in 4th and 5th association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="38" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="99" size="2" />
+<Title>S2 switch - Double Click value sent to 4th and 5th association groups</Title>
+<Description>This parameter defines value sent with Double Click command to devices associated in 4th and 5th association group.
+Available settings: 0-255 – sent value
+
+Setting parameters 31-33, 36-38 to appropriate value should result in:
+0 - turning off associated devices
+1-99 - forcing level of associated devices
+255 - setting associated devices to the last remembered state or turning them on</Description>
+</Parameter>
+
+<Parameter name="40" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Reaction to General Alarm</Title>
+<Description>This parameter determines how the device will react to General Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – turn ON after receiving the alarm frame
+2 – turn OFF after receiving the alarm frame
+3 – flash after receiving the alarm frame
+</Description>
+</Parameter>
+
+<Parameter name="41" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="2" size="1" />
+<Title>Reaction to Flood Alarm</Title>
+<Description>This parameter determines how the device will react to Flood Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – turn ON after receiving the alarm frame
+2 – turn OFF after receiving the alarm frame
+3 – flash after receiving the alarm frame
+</Description>
+</Parameter>
+
+<Parameter name="42" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Reaction to CO/CO2/Smoke Alarm</Title>
+<Description>This parameter determines how the device will react to CO, CO2 or Smoke frame.
+Available settings:
+0 – alarm frame is ignored
+1 – turn ON after receiving the alarm frame
+2 – turn OFF after receiving the alarm frame
+3 – flash after receiving the alarm frame
+</Description>
+</Parameter>
+
+<Parameter name="43" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>Reaction to Heat Alarm</Title>
+<Description>This parameter determines how the device will react to Heat Alarm frame.
+Available settings:
+0 – alarm frame is ignored
+1 – turn ON after receiving the alarm frame
+2 – turn OFF after receiving the alarm frame
+3 – flash after receiving the alarm frame
+</Description>
+</Parameter>
+
+<Parameter name="44" group="0" access="rw" type="time">
+<Setting from="1" to="32000" default="600" size="2" />
+<Title>First channel - time parameter for delay/auto ON/OFF modes</Title>
+<Description>This parameter allows to set duration of flashing alarm mode.
+Available settings: 1-32000 (1-32000s, 1s step) – duration
+</Description>
+</Parameter>
+
+<Parameter name="50" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="20" size="1" />
+<Title>First channel - power reports</Title>
+<Description>This parameter determines the minimum change in consumed power that will result in sending new power report to the main controller.
+Available settings:
+0 – reports are disabled
+1-100 (1-100%) – change in power
+</Description>
+</Parameter>
+
+<Parameter name="51" group="0" access="rw" type="time">
+<Setting from="0" to="120" default="10" size="1" />
+<Title>First channel - minimal time between power reports</Title>
+<Description>This parameter determines minimum time that has to elapse before sending new power report to the main controller.
+Available settings:
+0 – reports are disabled
+1-120 (1-120s) – report interval
+</Description>
+</Parameter>
+
+<Parameter name="53" group="0" access="rw" type="text">
+<Setting from="0" to="32000" default="100" size="2" />
+<Title>First channel - energy reports</Title>
+<Description>This parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller.
+Available settings:
+0 – reports are disabled
+1-32000 (0.01 – 320 kWh) – change in energy
+</Description>
+</Parameter>
+
+<Parameter name="54" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="20" size="1" />
+<Title>Second channel - power reports</Title>
+<Description>This parameter determines the minimum change in consumed power that will result in sending new power report to the main controller.
+Available settings:
+0 – reports are disabled
+1-100 (1-100%) – change in power
+</Description>
+</Parameter>
+
+<Parameter name="55" group="0" access="rw" type="time">
+<Setting from="0" to="120" default="10" size="1" />
+<Title>Second channel - minimal time between power reports</Title>
+<Description>This parameter determines minimum time that has to elapse before sending new power report to the main controller.
+Available settings:
+0 – periodic reports are disabled
+1-120 (1-120s) – report interval
+</Description>
+</Parameter>
+
+<Parameter name="57" group="0" access="rw" type="text">
+<Setting from="0" to="32000" default="100" size="2" />
+<Title>Second channel - energy reports</Title>
+<Description>This parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller.
+Available settings:
+0 – reports are disabled
+1-32000 (0.01 – 320 kWh) – change in energy
+</Description>
+</Parameter>
+
+<Parameter name="58" group="0" access="rw" type="time">
+<Setting from="0" to="32000" default="3600" size="2" />
+<Title>Periodic power reports</Title>
+<Description>This parameter determines in what time interval the periodic power reports are sent to the main controller.
+Available settings:
+0 – periodic reports are disabled
+1-32000 (1-32000s) – report interval
+</Description>
+</Parameter>
+
+<Parameter name="59" group="0" access="rw" type="time">
+<Setting from="0" to="32000" default="3600" size="2" />
+<Title>Periodic energy reports</Title>
+<Description>This parameter determines in what time interval the periodic energy reports are sent to the main controller.
+Available settings:
+0 – periodic reports are disabled
+1-32000 (1-32000s) – report interval
+</Description>
+</Parameter>
+
+<Parameter name="60" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Measuring energy consumed by the device itself</Title>
+<Description>This parameter determines whether energy metering should include the amount of energy consumed by the device itself. Results are being added to energy reports for first endpoint.
+Available settings:
+0 – function inactive
+1 – function active
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>
