@@ -1,0 +1,55 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="TBKHome Energy Meter Plugin TZ69E FW2.51" version="2.51" 
+  url="http://www.tkbhome.com/upimg/file/1124381999065.pdf" Manufacturer="0x118" ProductType="0x4" ProductID="0x2">
+
+<!--Preparer by Andy Whitton 10/1/2022 Based on TZ69 PDF-->
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>LED Behaviour</Title>
+<Description>Determines how the LED behaves vis-a-vis the output power being on or not.
+Available settings:
+0 – LED indicates on 
+1 – LED indicates off (Default)</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Remember State</Title>
+<Description>Determines if the device returns to its last state whenb power is restored.
+Available settings:
+0 – Start-up OFF
+1 – Start-up in last known state (Default)</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="text">
+<Setting from="0" to="32767" default="720" size="2" >5 seconds</Setting>
+<Title>Watt Meter Report Period</Title>
+<Description>Determines how frequently to report Watts being consumed.
+It is measure in 5 second units thus 720 = 720x5 = 3600 seconds = 1 hour</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="text">
+<Setting from="0" to="32767" default="6" size="2" >10 minutes</Setting>
+<Title>kWh Meter Report Period</Title>
+<Description>Determines how frequently to report kWhs consumed.
+It is measure in 10 minute units thus 6 = 6x10 = 60 minutes = 1 hour</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="text">
+<Setting from="10" to="3000" default="3000" size="2" >Watts</Setting>
+<Title>Watt Load Caution Threshold</Title>
+<Description>Determines the threshold in Watts at which an overload warning is issued.</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="text">
+<Setting from="1" to="10000" default="10000" size="2" >kWhs</Setting>
+<Title>kWh Consumption Caution Threshold</Title>
+<Description>Determines the threshold in kWh at which an consumption warning is issued.</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

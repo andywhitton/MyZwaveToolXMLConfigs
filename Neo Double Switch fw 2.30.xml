@@ -1,0 +1,86 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Neo Double Switch v2.30" version="2.30" 
+  url="http://www.szneo.com/en/products/show.php?id=196" Manufacturer="0x258" ProductType="0x200" ProductID="0x102B">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Restore state after power failure</Title>
+<Description>This parameter determines if the device will return to state prior to the power failure after power is restored.
+Available settings:
+0 – the device does not save the state prior to the power failure and returns to "off" position
+1 – the device restores its state prior to the power failure
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Backlight Enabled</Title>
+<Description>This parameter allows defines if the back light is enabled
+Available settings:
+0 – Disabled
+1 – Enabled
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>LED Indicates Off State</Title>
+<Description>This parameter determines if the LED displays ping when the light is off
+Available settings:
+0 – Disabled - No illumination
+1 – Enabled - Pink or Green colour when switch off
+</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="1,2,3" default="1" size="1" />
+<Title>Root Device Controlled Settings</Title>
+<Description>This parameter determines which end point is mapped to the root device (Endpoint 0)
+Available settings:
+1 – Endpoint 1 is mapped to root endpoint
+2 – Endpoint 2 is mapped to root endpoint
+3 – Both endpoints are mapped to root endpoint
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Faceplate Buttons Enabled</Title>
+<Description>This parameter determines if the buttons on teh face plate are enabled.
+Available settings:
+0 – Disabled
+1 – Enabled
+</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Timer Enabled</Title>
+<Description>This parameter determines if the timer is enabled
+Available settings:
+0 – Disabled
+1 – Enabled
+</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="text">
+<Setting from="1" to="32767" default="150" size="2" />
+<Title>Channel 1 Time Duration Setting</Title>
+<Description>This parameter defines how long the light on Channel 1 is on for when parameter 6 is enabled
+The value defines the number of minutes
+</Description>
+</Parameter>
+
+<Parameter name="8" group="0" access="rw" type="text">
+<Setting from="1" to="32767" default="150" size="2" />
+<Title>Channel 2 Time Duration Setting</Title>
+<Description>This parameter defines how long the light on Channel 2 is on for when parameter 6 is enabled
+The value defines the number of minutes
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

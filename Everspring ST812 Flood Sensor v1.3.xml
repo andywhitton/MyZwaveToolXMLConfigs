@@ -1,0 +1,22 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Everspring Flood Sensor ST812 FW1.3" version="1.3" url="https://www.everspring.com/portfolio-item/st812-flood-detector/" Manufacturer="0x60" ProductType="0xB" ProductID="0x1">
+
+<!-- To wake up the device press the link key, inside the devices battery compartment, three times within 1.5 seconds-->
+<Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="range">
+<Setting from="0" to="99" default="99" size="1" />
+<Title>Basic Level Set</Title>
+<Description>This parameter determines the value sent with Basic commands in case of detected flood.
+0 - OFF
+1 - 99: ON/Dim Level
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

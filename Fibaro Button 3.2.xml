@@ -1,0 +1,193 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro Button v3.2" version="3.2" 
+  url="https://manuals.fibaro.com/button/" Manufacturer="0x10F" ProductType="0xF01" ProductID="0x1000">
+
+<Description>Press the button 6 times to wake it up</Description>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32,64" default="127" size="1" />
+<Title>Scenes sent to the controller</Title>
+<Description>This parameter determines which actions result in sending scene IDs and attributes assigned to them
+1 – Button Pressed 1 time
+2 – Button Pressed 2 times
+4 – Button Pressed 3 times
+8 – Button Pressed 4 times
+16 – Button Pressed 5 times
+32 – Button Held Down
+64 – Button Released
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4" default="7" size="1" />
+<Title>Associations in Z-Wave Network Security Mode</Title>
+<Description>This parameter defines how commands are sent in specific association groups: as secure or non secure.  Parameters is active only in Z-Wave network Security Mode.  It does not apply to the 1st Lifeline group
+Available settings:
+1 – 2nd group sent as secure
+2 – 3rd group sent as secure
+4 – 4th group sent as secure
+</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Button Pressed 1 time - Command sent to 2nd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 2nd association group after 1 press.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="255" size="2" />
+<Title>Button Pressed 1 time Switch On Command for Second Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the second association group
+</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>Button Pressed 2 times - Command sent to 2nd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 2nd association group after 2 presses.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="99" size="2" />
+<Title>Button Pressed 2 times Switch On Command for 2nd Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the 2nd association group
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="0" size="1" />
+<Title>Button Pressed 3 times - Command sent to 2nd Association Group</Title>
+<Description>This parameter defines commands sent to devices assocaited in the 2nd association group after 3 presses.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="255" size="2" />
+<Title>Button Pressed 3 times Switch On Command for 2nd Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the second association group
+</Description>
+</Parameter>
+
+<!--Not in the official documentation so assuming it is here -->
+<Parameter name="19" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Button Held Down - Command sent to 2nd Association Group (May not exist)</Title>
+<Description>This parameter defines commands sent to devices associated in the 2nd association group after the button is held down.
+Available settings:
+0 – No action
+1 – Start level Change Up (Brightening)
+2 – Start level Change Down (Dimming)
+3 – Alternate between start level up and down
+</Description>
+</Parameter>
+
+<Parameter name="20" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Button Pressed 1 time - Command sent to 3rd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 3rd association group after 1 press.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="21" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="255" size="2" />
+<Title>Button Pressed 1 time Switch On Command for 3rd Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the 3rd association group
+</Description>
+</Parameter>
+
+<Parameter name="22" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>Button Pressed 2 times - Command sent to 3rd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 3rd association group after 2 presses.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="23" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="99" size="2" />
+<Title>Button Pressed 2 times Switch On Command for 3rd Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the 3rd association group
+</Description>
+</Parameter>
+
+<Parameter name="24" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Button Pressed 3 times - Command sent to 3rd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 3rd association group after 3 presses.
+Available settings:
+0 – No action
+1 – Switch On
+2 – Switch Off
+3 – Switch On/Off - alternately
+</Description>
+</Parameter>
+
+<Parameter name="25" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="0" size="2" />
+<Title>Button Pressed 3 times Switch On Command for 3rd Association Group</Title>
+<Description>This parameter defines what value means switch on, that will be sent to the 3rd association group
+</Description>
+</Parameter>
+
+<Parameter name="29" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Button Held Down - Command sent to 3rd Association Group</Title>
+<Description>This parameter defines commands sent to devices associated in the 3rd association group after the button is held down.
+Available settings:
+0 – No action
+1 – Start level Change Up (Brightening)
+2 – Start level Change Down (Dimming)
+3 – Alternate between start level up and down
+</Description>
+</Parameter>
+
+<Parameter name="30" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32,64" default="127" size="1" />
+<Title>Alarm frame triggers</Title>
+<Description>This parameter determines which actions result in sending alarm frames to 4th association group
+Available settings:
+1 – Button Pressed 1 time
+2 – Button Pressed 2 times
+4 – Button Pressed 3 times
+8 – Button Pressed 4 times
+16 – Button Pressed 5 times
+32 – Button Held Down
+64 – Button Released
+</Description>
+</Parameter>
+
+
+
+
+</Parameters>
+</Device>
+</xml>

@@ -1,5 +1,5 @@
 <xml version='1.0' encoding="UTF-8">
-<Device name="Yale Lock TBD" version="12.32" url="https://help.yale.co.uk/wp-content/uploads/2020/01/Z-wave-module-manual.pdf" Manufacturer='0x129' ProductType='0x7' ProductID='0x0'>
+<Device name="Yale Lock Smart Living Keyless" version="12.32" url="https://help.yale.co.uk/wp-content/uploads/2020/01/Z-wave-module-manual.pdf" Manufacturer='0x129' ProductType='0x7' ProductID='0x0'>
 
 
 <Parameters>

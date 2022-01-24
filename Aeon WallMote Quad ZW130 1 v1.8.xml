@@ -1,0 +1,115 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Aeon WallMote Quad ZW130 v1.8" version="1.8" 
+  url="https://help.aeotec.com/support/solutions/articles/6000162392-wallmote-quad-user-guide-" Manufacturer="0x86" ProductType="0x2" ProductID="0x82">
+
+<Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+</Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Touch Beep</Title>
+<Description>Determines is the device deeps when touched.
+0 = Disabled
+1 = Enabled (Default)
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Touch Vibration</Title>
+<Description>Determine whether the devices vibrates when touched
+0 = Disabled
+1 = Enabled (Default)
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Button Slide Function</Title>
+<Description>Determines if the device supports finger swiping
+0 = Disabled
+1 = Enabled (Default)
+</Description>
+</Parameter>
+
+<!-- Different documentation has this differently.  Value 3 may be scene and config report-->
+
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>WallMote Reports</Title>=hex2dec
+<Description>Determines the type of reporting.
+0 = Send nothing
+1 = Send central scene command notification
+2 = Send central scene command notification and Configuration Report (Different documentation)
+3 = Send central scene command notification and Configuration Report (Default)
+</Description>
+</Parameter>
+
+<!--Not present
+<Parameter name="5" group="0" access="rw" type="hexcheck">
+<Setting subtype1="Text" subtype2 = "text" size="4" /> 
+<Value1 from="0x0" to="0xFFFF" default="0x0" size="2" />
+<Value2 from="0x0" to="0xFFFF" default="0xFF00" size="2" />
+<Title>Set the button colour of WallSwipe</Title>
+<Description>Defines the the RGB colour displayed when pressed
+LSB: Define the B colour 0xBB00
+1: 0-255 – Blue
+2: 0-255 – Reserved (e.g. Full Blue = 65280 = 0xFF00)
+
+MSB: Define the RGB colour 0xRRGG
+Byte
+1: 0-255 – Red
+2: 0-255 – Green (e.g. Full Green is 255, Full Red = 65280 = 0xFF00)
+</Description>>
+</Parameter>
+-->
+
+<!-- Doesn't appear to be present on my define
+<Parameter name="33" group="0" access="w" type="hexcheck">
+<Setting subtype1="text" subtype2 = "range" size="4" /> 
+<Value1 from="0" to="16777215" default="255" size="3" />
+<Value2 from="0" to="1" default="0" size="1" />
+<Title>Test the LED, buzzer and vibrator</Title>
+<Description>A set only parameter
+LSB: 1 – Buzzer and vibrator test
+
+MSB: Define the RGB colour 0xRRGGBB
+Byte
+1: 0-255 – Red
+2: 0-255 – Green
+3: 0-255 – Blue
+</Description>>
+</Parameter>
+-->
+
+<Parameter name="39" group="0" access="rw" type="range">
+<Setting from="1" to="100" default="20" size="1" />
+<Title>Low Battery Alert Level</Title>
+<Description>Determines is battery level that triggers a low battery alert to be sent
+0 = Disabled
+1 - 100 = Batter percentage to trigger report
+</Description>
+</Parameter>
+
+<Parameter name="255" group="0" access="w" type="radio">
+<Setting values="1" default="0" size="1" />
+<Title>Factory Reset</Title>
+<Description>Performs a factory reset
+0x1 = Reset to factory defaults
+</Description>
+</Parameter>
+
+<Parameter name="255" group="0" access="w" type="range+">
+<Setting from="16777215" to="16777215" values="0" default="0" size="4" />
+<Title>Factory Reset And Remove From Network</Title>
+<Description>Performs a factory reset
+0x55555555 (16777215) = Reset to factory defaults and remove from Z-Wave network
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

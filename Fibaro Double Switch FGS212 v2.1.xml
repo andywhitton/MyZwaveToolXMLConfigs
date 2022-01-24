@@ -1,0 +1,157 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro Double Switch FGS212 v2.1" version="2.1" 
+  url="https://manuals.fibaro.com/double-relay-switch/" Manufacturer="0x10F" ProductType="0x200" ProductID="0x100A">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='10' default='closed'>Alarm response</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="255,0,1,2" default="255" size="1" />
+<Title>ALL ON/ALL OFF Action</Title>
+<Description>This parameter determines how the device will respond to the ALL ON and ALL OFF commands.
+Available settings:
+255 – ALL ON active, ALL OFF active
+0 – ALL ON inactive, ALL OFF inactive
+1 – ALL ON inactive, ALL OFF active
+2 – ALL ON active, ALL OFF inactive
+</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Auto Off Timer Manual Override State</Title>
+<Description>This parameter determines whether the auto off time is enabled or not
+Available settings:
+0 – Manual override disabled.  After a single press the relay turns on and automatically turns off after set time
+1 – Manual override enabled.  After a singel press the relay turns on and automatically turns off after set time; but a second press of the switch will switch off relay.
+</Description>
+</Parameter>
+
+<Parameter name="4" group="0" access="rw" type="text">
+<Setting from="0" to="65535" default="0" size="2" />
+<Title>Auto Off Time</Title>
+<Description>This parameter determines the duration of auto off.
+Available settings:
+0 - Disabled
+1-65535 (1-6553.5s, 0.1s step)
+</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Sending Commmands to 1st Association Group</Title>
+<Description>This parameter determines what commands are sent to the first association group
+Available settings:
+0 – Commands are sent for device on and off
+1 – Commands are sent for device on only.  Double click also sends an On
+2 – Commands are sent for device off only.  Double click also sends an On
+
+Parameter 15 must be set to 1 for this to work properly
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Bistable Switch Behaviour</Title>
+<Description>This parameter determines the how the device responds to a bi-stable switch
+Available settings:
+0 – Device changes status on switch change
+1 – Device changes status in sync with the switch e.g. On = On, Off = Off
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Switch Type</Title>
+<Description>This parameter determines the type of switch connected to the device
+Available settings:
+0 – Momentary switch
+1 – Toggle switch (Bi-stable)
+</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Dimmer/Roller Shutter Operation</Title>
+<Description>This parameter determines whether double press and holding the switch down operates for dimming (Not applicable on switch)
+Available settings:
+0 – Dimmer/Roller Shutter control is not active
+1 – Dimmer/Roller Shutter control is active
+</Description>
+</Parameter>
+
+<Parameter name="16" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Restore state after power failure</Title>
+<Description>This parameter determines if the device will return to state prior to the power failure after power is restored.
+Available settings:
+0 – the device does not save the state prior to the power failure and returns to "off" position
+1 – the device restores its state prior to the power failure
+</Description>
+</Parameter>
+
+
+<Parameter name="30" group="10" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>General Alarm Response For Relay 1</Title>
+<Description>This parameter allows to choose how relay 1 responds to the General Alarm
+Available settings:
+0 – Does nothing
+1 – Relay On
+2 – Relay Off
+3 – Relay Flashing
+</Description>
+</Parameter>
+
+<Parameter name="31" group="10" access="rw" type="radio">
+<Setting values="0,1,2,3" default="2" size="1" />
+<Title>Flooding Alarm Response For Relay 1</Title>
+<Description>This parameter allows to choose how relay 1 responds to the Flooding Alarm
+Available settings:
+0 – Does nothing
+1 – Relay On
+2 – Relay Off
+3 – Relay Flashing
+</Description>
+</Parameter>
+
+<Parameter name="32" group="10" access="rw" type="radio">
+<Setting values="0,1,2,3" default="3" size="1" />
+<Title>Smoke, CO, CO2 Alarm Response For Relay 1</Title>
+<Description>This parameter allows to choose how relay 1 responds to the Smoke, CO and CO2 Alarms
+Available settings:
+0 – Does nothing
+1 – Relay On
+2 – Relay Off
+3 – Relay Flashing
+</Description>
+</Parameter>
+
+<Parameter name="33" group="10" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>Temperature Alarm Response For Relay 1</Title>
+<Description>This parameter allows to choose how relay 1 responds to the Temperature Alarm
+Available settings:
+0 – Does nothing
+1 – Relay On
+2 – Relay Off
+3 – Relay Flashing
+</Description>
+</Parameter>
+
+<Parameter name="39" group="10" access="rw" type="text">
+<Setting from="1" to="65535" default="600" size="2" />
+<Title>Flash Timing</Title>
+<Description>This parameter determines the duration of the alarm flash
+Available settings:
+1-65535 (1-65.535s, 0.001s steps)
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

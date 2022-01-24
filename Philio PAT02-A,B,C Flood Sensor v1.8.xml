@@ -1,0 +1,130 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Philio PAT02-A/B/C Flood Sensor" version="1.8" 
+  url="https://static1.squarespace.com/static/5c1afbd1266c07479bc41525/t/61163237ee081864a8668048/1628844600715/PAT02_Manual-A1-20210722.pdf" Manufacturer="0x13C" ProductType="0x2" ProductID="0x1F">
+
+<!-- To wake up the device press the tamper key once -->
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+</Groups>
+
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="range+">
+<Setting from="0" to="100" values="255" default="0" size="1" />
+<Title>Basic Set OFF Level (PAT2-A,C)</Title>
+<Description>Setting the BASIC command value to be sent to Group 2 when the flood detection ENDS.
+0 = Off
+1 - 100 = Set dimming level
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="range+">
+<Setting from="0" to="100" values="255" default="255" size="1" />
+<Title>Basic Set ON Level (PAT2-A,C)</Title>
+<Description>Setting the BASIC command value to b esent to Group 2 when a flood is detceted.
+255 = On
+0 - 100 = Set dimming level
+</Description>
+</Parameter>
+
+<Parameter name="5" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32" default="0" size="1" />
+<Title>Operation Mode</Title>
+<Description>This parameter defines the Operating Mode of the sensor.
+ 1 = Flood detection - ON: Disable OFF: Enabled
+ 2 = Reserved Off
+ 4 = Reserved Off
+ 8 = Temperature Scale - ON: Celcius OFF: Fahrenheit
+16 = Reserved Off
+32 = Temperature Reporting - ON: Disable OFF: Enabled
+</Description>
+</Parameter>
+
+<Parameter name="6" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32" default="0" size="1" />
+<Title>Multi-Sensor Function Switch</Title>
+<Description>This parameter defines the functioning of the sensor.
+Value
+1 = Reserved Off
+2 = Reserved Off
+4 = Reserved Off
+8 = Reserved Off
+16 = Reserved Off
+32 = Humidity Reporting (PAT2 A,C) - ON: Disable OFF: Enabled
+</Description>
+</Parameter>
+
+<Parameter name="7" group="0" access="rw" type="binarycheck">
+<Setting values="1,2,4,8,16,32,64" default="0" size="1" />
+<Title>Customer Function</Title>
+<Description>This parameter defines the functioning of the sensor.
+Values
+1 = Reserved
+2 = Reserved - On to enable reporting to controller
+4 = Reserved
+8 = Send out BASIC OFF after the flood event clears - ON: Disable OFF: Enabled
+16 = Notification Type - ON: Using Sensor Binary Report OFF:Using Notification Report
+32 = Multi CC in auto report - ON: Disable OFF: Enabled
+64 = Battery Status Report - ON: Disable OFF: Enabled
+
+Setting this parameter to 22 is know to make it report motion to the controller
+</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" >in 30 minute ticks</Setting>
+<Title>Auto Report Battery Interval</Title>
+<Description>Sets the interval between Battery auto reports in 30 minute ticks. 12 (default) is 6 hours. 48 therefore is daily.
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" >in 30 minute ticks</Setting>
+<Title>Auto Report Temperature Interval (PAT2-A,B)</Title>
+<Description>Sets the interval between temperature auto reports in 30 minute ticks. 12 (default) is 6 hours.
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" >in 30 minute ticks</Setting>
+<Title>Auto Report Humidity Interval (PAT2-A,B)</Title>
+<Description>Sets the interval between humidity auto reports in 30 minute ticks. 12 (default) is 6 hours.
+</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="range">
+<Setting from="1" to="127" default="12" size="1" >in 30 minute ticks</Setting>
+<Title>Auto Report Flood Interval (PAT2-A,C)</Title>
+<Description>Sets the interval between flood auto reports in 30 minute ticks. 12 (default) is 6 hours.
+</Description>
+</Parameter>
+
+<Parameter name="20" group="0" access="rw" type="range">
+<Setting from="1" to="255" default="30" size="1" >in minutes</Setting>
+<Title>Auto Report Tick Interval</Title>
+<Description>Sets the duration of a Tick in minutes, impacting the timings set in parameters 10-15.
+</Description>
+</Parameter>
+
+<Parameter name="21" group="0" access="rw" type="range">
+<Setting from="0" to="127" default="1" size="1" >in Fahrenheit</Setting>
+<Title>Temperature Change Report (PAT2-A,B)</Title>
+<Description>The amount the temperature must change in Fahrenheit to generate a temperature report.  Temperature is sampled every 10 seconds.
+0 = Off
+The temperature will also be reported if it exceeds 140F.
+</Description>
+</Parameter>
+
+<Parameter name="23" group="0" access="rw" type="range">
+<Setting from="0" to="60" default="5" size="1" >in percent</Setting>
+<Title>Humidity Change Report (PAT2-A,B)</Title>
+<Description>The amount the humidity must change in percent to generate a humidity report.  Humidity is sampled every 10 seconds.
+0 = Off
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>

@@ -1,0 +1,70 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="POPP Plugin Socket" version="1.0" 
+  url="https://manualzz.com/doc/9530217/popp-123580-manual" Manufacturer="0x154" ProductType="0x1100" ProductID="0x1">
+
+<!--Prepared by Andy Whitton on 9/1/2022
+
+There are many other parameters that return values buyt I think they relate to dimming features are dont do anything on this device.
+-->
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="1" size="1" />
+<Title>LED Behaviour</Title>
+<Description>Determines how the LED behaves vis-a-vis the output power being on or not.
+Available settings:
+0 – Disabled (Off all the time)
+1 – Show switch state (Default) On when output is on
+2 – Night mode (Inverted) Off when output is on
+3 – Operated by Indicator Command Class</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="time">
+<Setting from="0" to="65535" default="0" size="2" >in seconds</Setting>
+<Title>Auto off timer</Title>
+<Description>This parameter allows to set a duration the plug will stay on
+Available settings:
+0 – Disabled - The plug will stay on until switched off
+1-65535 – Number of seconds to stay on for</Description>
+</Parameter>
+
+<Parameter name="3" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3" default="0" size="1" />
+<Title>RF OFF Command Behaviour</Title>
+<Description>Determines how the socket will respond to the RF Off command
+Available settings:
+0 – Switch off (Default)
+1 – Ignore
+2 – Switch on
+3 – Switch on if load is off else switch off</Description>
+</Parameter>
+
+<!--
+<Parameter name="4" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Unknown</Title>
+<Description>It is unknown what this parameter does:
+0 – Always off
+1 – Return to last state (Default)</Description>
+</Parameter>
+-->
+
+<Parameter name="5" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>State After Power is Restored</Title>
+<Description>Determines the socket state after power has been restored
+Available settings:
+0 – Always off
+1 – Return to last state (Default)</Description>
+</Parameter>
+
+
+
+</Parameters>
+</Device>
+</xml>

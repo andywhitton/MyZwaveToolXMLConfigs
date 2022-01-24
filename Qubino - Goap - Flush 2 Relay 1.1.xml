@@ -1,0 +1,182 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Qubino (Goap) Flush 2 Relay v1.1" version="1.1" 
+  url="https://manuals.fibaro.com/switch-2/" Manufacturer="0x159" ProductType="0x2" ProductID="0x51">
+
+<Parameters>
+
+<Parameter name="1" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Swith 1 Type</Title>
+<Description>This parameter determines the of switch connected so input 1
+Available settings:
+0 – Momentary switch
+1 – Toggle switch
+</Description>
+</Parameter>
+
+<Parameter name="2" group="0" access="rw" type="radio">
+<Setting values="0,1" default="1" size="1" />
+<Title>Swith 2 Type</Title>
+<Description>This parameter determines the of switch connected so input 1
+Available settings:
+0 – Momentary switch
+1 – Toggle switch
+</Description>
+</Parameter>
+
+<Parameter name="10" group="0" access="rw" type="radio">
+<Setting values="0,1,2,255" default="255" size="2" />
+<Title>ALL ON/ALL OFF Behaviour</Title>
+<Description>This parameter determines how the device responds to the ALL ON and ALL OFF commands
+Available settings:
+0 – ALL ON inactive, ALL OFF inactive
+1 – ALL ON inactive, ALL OFF active
+2 – ALL ON active, ALL OFF inactive
+255 – ALL ON active, ALL OFF active
+</Description>
+</Parameter>
+
+<Parameter name="11" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="0" size="2" />
+<Title>Off Timer For Q1 Output</Title>
+<Description>This parameter determines whether an OFF timer is active on Q1 and if so for how long it will operate before switching off.
+Available settings:
+0 – AUTO OFF is inactive
+1 – 32535 Timer interval (Note it is either in seconds on 0.01s depending on parameter 15 setting)
+</Description>
+</Parameter>
+
+<Parameter name="12" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="0" size="2" />
+<Title>On Timer For Q1 Output</Title>
+<Description>This parameter determines whether an ON timer is active on Q1 and if so for how long it will operate before switching off.
+Available settings:
+0 – AUTO ON is inactive
+1 – 32535 Timer interval (Note it is either in seconds on 0.01s depending on parameter 15 setting)
+</Description>
+</Parameter>
+
+<Parameter name="13" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="0" size="2" />
+<Title>Off Timer For Q2 Output</Title>
+<Description>This parameter determines whether an OFF timer is active on Q2 and if so for how long it will operate before switching off.
+Available settings:
+0 – AUTO OFF is inactive
+1 – 32535 Timer interval (Note it is either in seconds on 0.01s depending on parameter 15 setting)
+</Description>
+</Parameter>
+
+<Parameter name="14" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="0" size="2" />
+<Title>On Timer For Q2 Output</Title>
+<Description>This parameter determines whether an ON timer is active on Q2 and if so for how long it will operate before switching off.
+Available settings:
+0 – AUTO ON is inactive
+1 – 32535 Timer interval (Note it is either in seconds on 0.01s depending on parameter 15 setting)
+</Description>
+</Parameter>
+
+<Parameter name="15" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Timer Tick Size</Title>
+<Description>This parameter determines the tick size for parameters 10-14
+Available settings:
+0 – Seconds
+1 – Milliseconds
+</Description>
+</Parameter>
+
+<Parameter name="30" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Remember State After Power Failure</Title>
+<Description>This parameter determines if the device starts up in the same state as when it lost power
+Available settings:
+0 – Returns to last state
+1 – Starts OFF
+</Description>
+</Parameter>
+
+<Parameter name="40" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="10" size="1" />
+<Title>Power Change Reporting Threshold on Q1</Title>
+<Description>This parameter determines the power change threshold in percent that triggers a report.
+Available settings:
+0 – Reporting disabled
+1 - 100 – Percentage change in power usage
+</Description>
+</Parameter>
+
+<Parameter name="41" group="0" access="rw" type="range">
+<Setting from="0" to="100" default="10" size="1" />
+<Title>Power Change Reporting Threshold on Q2</Title>
+<Description>This parameter determines the power change threshold in percent that triggers a report.
+Available settings:
+0 – Reporting disabled
+1 - 100 – Percentage change in power usage
+</Description>
+</Parameter>
+
+<Parameter name="42" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="300" size="2" />
+<Title>Power Reporting Interval For Q1</Title>
+<Description>This parameter determines the frequency of time based power reporting
+Available settings:
+0 – Time based reporting off
+1 – 32535 Time in seconds
+</Description>
+</Parameter>
+
+<Parameter name="43" group="0" access="rw" type="time">
+<Setting from="0" to="32525" default="300" size="2" />
+<Title>Power Reporting Interval For Q2</Title>
+<Description>This parameter determines the frequency of time based power reporting
+Available settings:
+0 – Time based reporting off
+1 – 32535 Time in seconds
+</Description>
+</Parameter>
+
+<Parameter name="63" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Q1 Switch Output Type</Title>
+<Description>This parameter determines if the Switch Output Type on Q1
+Available settings:
+0 – When the switch is ON, it provides 240V (NC)
+1 – When the switch is ON, it provides 0V (NO)
+</Description>
+</Parameter>
+
+<Parameter name="64" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Q2 Switch Output Type</Title>
+<Description>This parameter determines if the Switch Output Type on Q2
+Available settings:
+0 – When the switch is ON, it provides 240V (NC)
+1 – When the switch is ON, it provides 0V (NO)
+</Description>
+</Parameter>
+
+<Parameter name="110" group="0" access="rw" type="text">
+<Setting from="0" to="32526" default="32536" size="2" />
+<Title>Temperature Sensor Offset</Title>
+<Description>This parameter determines the temperature adjustment to apply to the device reading to align with reality
+Available settings:
+32526 – No offset
+1 – 100 Positive offset in 0.1s per tick (10 = +1s)
+1001 – 1100 Negative offset in 0.1s per tick - Subtract 1000 to get adjustment (1010-1000 = 10 = -1s)
+</Description>
+</Parameter>
+
+<Parameter name="120" group="0" access="rw" type="range">
+<Setting from="0" to="127" default="5" size="1" />
+<Title>Temperature Sensor Reporting Threshold</Title>
+<Description>This parameter determines the temperature change in C required to trigger a temperature report
+Available settings:
+0 – Reporting disabled
+1 – 127 Temperature change require to report in 0.1C per tick (10 = +1C)
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>
