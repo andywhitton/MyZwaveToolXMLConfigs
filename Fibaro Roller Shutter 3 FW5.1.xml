@@ -1,0 +1,237 @@
+<xml version='1.0' encoding="UTF-8">
+<Device name="Fibaro Roller Shutter 3" version="5.1" 
+  url="https://manuals.fibaro.com/wp-content/uploads/2018/12/FGR-223-EN-T-v1.2.pdf" Manufacturer="0x10F" ProductType="0x303" ProductID="0x1000">
+
+ <Groups>
+    <Group ID='0' default='open'>Basic functionalities</Group>
+    <Group ID='1' default='closed'>Alarm functionalities</Group>
+    <Group ID='2' default='closed'>Power and Energy Reporting</Group>
+ </Groups>
+
+<Parameters>
+
+<Parameter name="20" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Switch Type</Title>
+<Description>Defines the type of switch attached.
+Available settings
+0 – Two Way Momentary Switch
+1 – Toggle Switch
+2 – Single Way Momentary Switch, only connected to S1</Description>
+</Parameter>
+
+<Parameter name="24" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Input Orientation</Title>
+<Description>Defines the orientation of the switches
+Available settings
+0 – Default S1 = Up, S2 = Down
+1 – Reversed S1 = Down, S2 = Up
+</Description>
+</Parameter>
+
+<Parameter name="25" group="0" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Outputs Orientation</Title>
+<Description>Defines the channel outputs in response to inputs to fix mis wiring
+Available settings
+0 – Default Q1 = Up, Q2 = Down
+1 – Reversed Q1 = Down, Q2 = Up
+</Description>
+</Parameter>
+
+<Parameter name="30" group="1" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2 = "radio" size="4" />
+<Value1 default="0x0000" size="2" />
+<Value2 values="0,1,2" default="0" size="2" />
+<Title>Reaction to General Alarm</Title>
+<Description>This parameter determines how the device will react to General Alarm frame.
+Actions
+0 – Alarm frame is ignored
+1 – Open blind
+2 – Close blind
+</Description>
+</Parameter>
+
+<Parameter name="31" group="1" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2 = "radio" size="4" />
+<Value1 default="0x05FF" size="2" />
+<Value2 values="0,1,2" default="0" size="2" />
+<Title>Reaction to Flood Alarm</Title>
+<Description>This parameter determines how the device will react to Flood Alarm frame.
+Actions
+0 – Alarm frame is ignored
+1 – Open blind
+2 – Close blind
+</Description>
+</Parameter>
+
+<Parameter name="32" group="1" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2 = "radio" size="4" />
+<Value1 default="0x01FF" size="2" />
+<Value2 values="0,1,2" default="0" size="2" />
+<Title>Reaction to Smoke Alarm</Title>
+<Description>This parameter determines how the device will react to Smoke Alarm frame.
+Actions
+0 – Alarm frame is ignored
+1 – Open blind
+2 – Close blind
+</Description>
+</Parameter>
+
+<Parameter name="33" group="1" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2 = "radio" size="4" />
+<Value1 default="0x02FF" size="2" />
+<Value2 values="0,1,2" default="0" size="2" />
+<Title>Reaction to CO Alarm</Title>
+<Description>This parameter determines how the device will react to CO Alarm frame.
+Actions
+0 – Alarm frame is ignored
+1 – Open blind
+2 – Close blind
+</Description>
+</Parameter>
+
+<Parameter name="35" group="1" access="rw" type="hexcheck">
+<Setting subtype1="reserved" subtype2 = "radio" size="4" />
+<Value1 default="0x04FF" size="2" />
+<Value2 values="0,1,2" default="0" size="2" />
+<Title>Reaction to Heat Alarm</Title>
+<Description>This parameter determines how the device will react to Heat Alarm frame.
+Actions
+0 – Alarm frame is ignored
+1 – Open blind
+2 – Close blind
+</Description>
+</Parameter>
+
+<Parameter name="60" group="2" access="rw" type="radio">
+<Setting values="0,1" default="0" size="1" />
+<Title>Power Measurement</Title>
+<Description>This parameter determines if power monitoring is active.
+Available settings:
+0 – Inactive
+1 – Active
+</Description>
+</Parameter>
+
+<Parameter name="61" group="2" access="rw" type="text">
+<Setting from="0" to="500" default="15" size="2" > percent </Setting>
+<Title>Power Reports On Percentage Change</Title>
+<Description>This parameter determines the percentage change in power consumption to prompt a power report
+Range From 0 (Disabled) to 500%
+</Description>
+</Parameter>
+
+<Parameter name="62" group="2" access="rw" type="text">
+<Setting from="0" to="32400" default="3600" size="2" > in seconds </Setting>
+<Title>Periodic Power Reporting Interval</Title>
+<Description>This parameter determines the interval in seconds between periodic power reports.
+0 (Disabled)
+Range From 30 to 32400 seconds
+</Description>
+</Parameter>
+
+<Parameter name="65" group="2" access="rw" type="text">
+<Setting from="0" to="500" default="10" size="2" > in 0.01kWh </Setting>
+<Title>Energy Reports On Percentage Change</Title>
+<Description>This parameter determines the percentage change in energy consumption to prompt an energy report
+Range From 0 (Disabled) to 500 (unit 0.01kWh)
+</Description>
+</Parameter>
+
+<Parameter name="66" group="2" access="rw" type="text">
+<Setting from="0" to="32400" default="3600" size="2" > in seconds </Setting>
+<Title>Periodic Energy Reporting Interval</Title>
+<Description>This parameter determines the interval in seconds between periodic energy reports.
+0 (Disabled)
+Range From 30 to 32400 seconds
+</Description>
+</Parameter>
+
+<Parameter name="150" group="2" access="rw" type="radio">
+<Setting values="0,1,2" default="0" size="1" />
+<Title>Calibrate Roller Shutter</Title>
+<Description>This parameter forces the Roller Shutter to perform a calibration if the Operating mode is 1,2 or 4 (param 151).
+Calibration is achieved by determining the Limit and setting this to be 100%.
+Available settings:
+0 – Device is not calibrated
+1 - Device is calibrated
+2 – Perform calibration - After calibration the parameter is reset to 1 automatically</Description>
+</Parameter>
+
+<Parameter name="151" group="0" access="rw" type="radio">
+<Setting values="0,1,2,3,4,5,6" default="1" size="1" />
+<Title>Roller Shutter operating mode</Title>
+<Description>This parameter determines how the roller shutter functions.
+Available settings:
+0 – Roller Blind Mode, without positioning
+1 – Roller Blind Mode, with positioning
+2 – Venetian Blind Mode, with positioning
+3 – Gate Mode, without positioning
+4 – Gate Mode, with positioning
+5 - Roller blind with built-in driver
+6 - Roller blind with built-in driver (impulse)
+</Description>
+</Parameter>
+
+<Parameter name="152" group="0" access="rw" type="text">
+<Setting from="0" to="65535" default="150" size="4" > in 0.01 seconds </Setting>
+<Title>Venetian Blind Lamellas Full Turn</Title>
+<Description>This parameter determines the full turn of the venetian blind lamellas, when parameter 151 is set to 2
+For gates (Parameter 151 values 3 or 4), determines the time the gates remain open before starting to close.  If set to 0 gate will not close.
+Range 0 – 65535 (Unit 0.01 seconds) Default 150 = 1.5 seconds
+</Description>
+</Parameter>
+
+<Parameter name="153" group="0" access="rw" type="radio">
+<Setting values="0,1,2" default="1" size="1" />
+<Title>Set lamellas back to previous position</Title>
+<Description>This parameter influences lamellas positioning in various situations.  Only applicable if parameter 151 is in Mode 2 
+Available settings:
+0 – Lamellas return to previously set position only in case of the main controller operation
+1 – As per 0 plus with momentory switch operation, or when the limit switch is reached
+2 – As per 1 plus after receiving a "STOP" control frame (Switch Multilevel Stop)
+</Description>
+</Parameter>
+
+<Parameter name="154" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="2" > in 0.1 seconds </Setting>
+<Title>Time to switch off Roller Shutter after reaching the limit</Title>
+<Description>This parameter determines how the Roller Shutter responds to the limit being reached.
+In Roller Blind and Venetian Modes (Param 151) this parameter determines when the Roller Shutter will turn off after reaching the limit in 1/10 of a second. e.g. a value of 10 = 1s.
+
+In Gate Mode (Param 151) the parameter determines a time period after which a gate will start closing after S2 contact has been disconnected.  In this mode time to turn off the Roller Shutter after reaching a limit switch is fixed at 3 seconds.  However a value of 0 means the gate will not auto close.
+</Description>
+</Parameter>
+
+<Parameter name="155" group="0" access="rw" type="range">
+<Setting from="0" to="255" default="10" size="2" > in Watts </Setting>
+<Title>Motor operation detection</Title>
+<Description>This parameter defines the power threshold in Watts to be used to determine when the limit is reached.
+Available settings:
+    0 – Limit is not detected
+1-255 – Watts</Description>
+</Parameter>
+
+<Parameter name="156" group="0" access="rw" type="text">
+<Setting from="1" to="65535" default="6000" size="4" > in 0.01 seconds </Setting>
+<Title>Time up movement</Title>
+<Description>This parameter defines the time period for the roller blinds to reach the top.
+Available settings:
+1-65535 – Time in 0.01 seconds e.g. 6000 = 60 seconds
+</Description>
+</Parameter>
+
+<Parameter name="157" group="0" access="rw" type="text">
+<Setting from="1" to="65535" default="6000" size="4" > in 0.01 seconds </Setting>
+<Title>Time down movement</Title>
+<Description>This parameter defines the time period for the roller blinds to reach the top.
+Available settings:
+1-65535 – Time in 0.01 seconds e.g. 6000 = 60 seconds
+</Description>
+</Parameter>
+
+</Parameters>
+</Device>
+</xml>
